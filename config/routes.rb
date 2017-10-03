@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 
   get 'pages/home'
 
+  get 'pages/landingpage'
+
   devise_for :users
   resources :classifieds
   get '/search', to: 'classifieds#search'
   
   # root 'classifieds#search'
-  root 'pages#home'
+  root 'pages#landingpage'
 
   get 'stations/show'
 

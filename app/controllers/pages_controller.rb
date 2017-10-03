@@ -4,6 +4,10 @@ class PagesController < ApplicationController
     @classifieds = Classified.all
   end
 
+  def landingpage
+
+  end
+
   def about
   end
 
