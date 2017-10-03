@@ -23,17 +23,18 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#how">Comment ça marche ?</a></li>
-                        <li><a href="#resorts">Stations de ski</a></li>
-                        <li><a href="#features">Fonctionnalités</a></li>
-                        <li><a href="#pricing">Tarifs</a></li>
+                        
                     
                     <% if user_signed_in? %>
                       <li><%= link_to "Mon tableau de bord", dashboard_path, class:"dropdown-toggle" %></li>
                       <li><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
                       <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
                   <% else %>
-                      <li><%= link_to "Se connecter", new_user_session_path, class:"btn-signup btn-primary" %></li>
+                      <li><a href="#how">Comment ça marche ?</a></li>
+                      <li><a href="#resorts">Stations de ski</a></li>
+                      <li><a href="#features">Fonctionnalités</a></li>
+                      <li><a href="#pricing">Tarifs</a></li>
+                      <li><%= link_to "Se connecter", pages_home_path, class:"btn-signup btn-primary" %></li>
                   <% end %>
                       </ul>
                   </div><!-- /.navbar-collapse -->

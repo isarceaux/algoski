@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require turbolinks
-//= require jquery.min
+//= require jquery
+//= require jquery_ujs
 //= require jquery.easing.1.3.min
 //= require select2
 //= require SmoothScroll
 //= require bootstrap
-//= require bootstrap.min
 
 //jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
