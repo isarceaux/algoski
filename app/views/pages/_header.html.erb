@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                       </button>
                       <a class="navbar-logo" href="/">
-                        <%= image_tag('logo-grey.png', size:'30', class:'brightness')%>
+                        <%= image_tag('logo-white.png', size:'30', class:'brightness')%>
                       </a>
                       <a class="navbar-brand brightness" href="/">
                           Algoski
@@ -24,9 +24,10 @@
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav navbar-right">
                         <li><a href="#how">Comment ça marche ?</a></li>
+                        <li><a href="#resorts">Stations de ski</a></li>
                         <li><a href="#features">Fonctionnalités</a></li>
-                    <li><a href="#pricing">Tarifs</a></li>
-                    <li><a href="#clients">Technologie</a></li>
+                        <li><a href="#pricing">Tarifs</a></li>
+                    
                     <% if user_signed_in? %>
                       <li><%= link_to "Mon tableau de bord", dashboard_path, class:"dropdown-toggle" %></li>
                       <li><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
@@ -57,17 +58,14 @@
                         <!-- slide item -->
                           <div class="item active">
                               <%= image_tag 'stock1.jpg', alt:'slide-img' %>
-                              <!-- <img src="images/stock1.jpg" alt="slide-img"> -->
                           </div>
                           <!-- slide item -->
                         <div class="item">
                             <%= image_tag 'stock2.jpg', alt:'slide-img' %>
-                            <!-- <img src="images/stock2.jpg" alt="slide-img"> -->
                         </div>
                         <!-- slide item -->
                         <div class="item">
                             <%= image_tag 'stock3.jpg', alt:'slide-img' %>
-                            <!-- <img src="images/stock3.jpg" alt="slide-img"> -->
                         </div>
                       </div> <!-- /.carousel-inner -->
 

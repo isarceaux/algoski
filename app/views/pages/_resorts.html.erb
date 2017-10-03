@@ -1,0 +1,79 @@
+<section class="bg-light section" id="resorts">
+    <div class="container">
+      <div class="row text-center container-to-align-vertically">
+
+        <div class="col-md-6">
+          <h2 class="title">Stations de ski</h2>
+          <p class="slogan"><%= @resort_count %> stations de ski dans notre panel.</p>
+          <hr>
+
+          <div class="row">
+              <div class="col-md-offset-3 col-md-6">
+                <p>Vérifier que votre station est dans la liste :</p>
+                <%= form_tag({controller: "users", action: "dashboard"}, method: :get, class:"form-inline col-xs-12" ) do %>
+                <div class="input-group">
+                    <%= select_tag(:ville_searched, options_for_select(list_station), class:'form-control select-resort', multiple: false) %>
+                <% end %>          
+                </div>
+              </div>
+          </div>
+          <div class="only-small-screen"><hr></div>
+        </div>
+        
+        <div class="col-md-6">
+
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <%= image_tag 'resorts/chamonix-small.jpg', alt:'chamonix'%>
+                <div class="carousel-caption">
+                  <h3>Chamonix</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/tignes-small.jpg', alt:'tignes'%>
+                <div class="carousel-caption">
+                  <h3>Tignes</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/samoens-small.jpg', alt:'samoens'%>
+                <div class="carousel-caption">
+                  <h3>Samoëns</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/les-arcs-small.jpg', alt:'les arcs'%>
+                <div class="carousel-caption">
+                  <h3>Les Arcs</h3>
+                </div>
+              </div>
+
+              <div class="item carousel-resort-pic">
+                <%= image_tag 'resorts/meribel-small.jpg', alt:'meribel'%>
+                <!-- <div class="carousel-caption">
+                  <h3>Méribel</h3>
+                </div> -->
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+    
+    </div> <!-- end row -->
+  </div><!-- /End Container -->
+</section>

@@ -1,21 +1,24 @@
 module ApplicationHelper
   def list_station
-    #take all ville in an array
-    villes = Classified.group("ville").order("ville").pluck("ville")
-    #iterate over the array
+    # #take all ville in an array
+    # villes = Classified.group("ville").order("ville").pluck("ville")
+    # #iterate over the array
+    # list_of_station = []
+    # regions = ['66612889','66612807','66612786','66612960','66612917','66612918','66612972','66612919','66612803','66612962'] #Les trois vallées + Tignes et Val d'Isère
+
+    # villes.each do |i|
+    #   if i
+    #     if Resort.find_by_ville(I18n.transliterate(i))
+    #        if Classified.where("ville":"#{i}").count > 10 && (regions.include? Resort.find_by_ville(I18n.transliterate(i)).region_number)
+    #          list_of_station.push(titleize(i))
+    #       end
+    #     end
+    #   end
+    # end
     list_of_station = []
-    regions = ['66612889','66612807','66612786','66612960','66612917','66612918','66612972','66612919','66612803','66612962'] #Les trois vallées + Tignes et Val d'Isère
-
-    villes.each do |i|
-      if i
-        if Resort.find_by_ville(I18n.transliterate(i))
-           if Classified.where("ville":"#{i}").count > 10 && (regions.include? Resort.find_by_ville(I18n.transliterate(i)).region_number)
-             list_of_station.push(titleize(i))
-          end
-        end
-      end
+    Resort.group('ville').pluck('ville').each do |r|
+      list_of_station << titleize(r)
     end
-
     return(list_of_station)
 
   end

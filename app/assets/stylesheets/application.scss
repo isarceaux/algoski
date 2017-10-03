@@ -1,5 +1,6 @@
 /*
  *= require_self
+ *= require select2
  *= require_tree .
  */
 
@@ -10,7 +11,7 @@
 
 .brightness
 {
-  -webkit-filter: brightness(0.5);
+  -webkit-filter: brightness(1);
 }
 
 navbar-brand:hover
@@ -21,17 +22,55 @@ navbar-brand:hover
 .navbar-logo 
 {
   float: left;
-    height: 50px;
+  height: 50px;
   line-height: 50px;
   padding-right: 10px;
+  margin-left : 20px;
   img:hover
   {
-    -webkit-filter:none;
+    /*color: lightgrey;*/
   }
 }
 
 .navbar-brand:hover
 {
   color:white;
-  -webkit-filter:none;
 }
+
+.container-to-align-vertically
+{
+  display: flex;
+  align-items: center;
+}
+
+.only-big-screen
+{
+  visibility: visible;
+}
+
+.only-small-screen
+{
+  visibility: hidden;
+}
+
+@media screen and (max-width: 480px) {
+  .container-to-align-vertically
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .only-small-screen
+  {
+    visibility: visible;
+  }
+  .only-big-screen
+  {
+    display: none;
+  }
+
+}
+
+
+
+

@@ -63,10 +63,21 @@ p {
   position: relative;
   padding: 30px 0 0px 0;
   min-height: 720px;
-  background: #333b4d;
+  /*background: #333b4d;*/
+  /*background: blue;*/
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-image: url('/assets/peak-big.jpg');
   background-size: cover;
   color: #fff;
 }
+
+@media screen and (max-width: 480px) {
+.hero{
+  background-image: url('/assets/peak-sm.jpg');
+}
+}
+
 .btn-signup {
   padding: 10px 20px !important;
   border-radius: 3px;
@@ -110,7 +121,7 @@ p {
 .hero h4 {
   margin-bottom: 45px;
   font-family: 'Lato', sans-serif;
-  color: #C2BEBE;
+  /*color: #C2BEBE;*/
   line-height: 26px;
 }
 .use-btn {
@@ -140,7 +151,8 @@ p {
   font-weight: 700;
 }
 .navbar-brand span {
-  color: #3bc0c3;
+  /*color: #3bc0c3;*/
+  color: #fff;
 }
 .navbar-brand i {
   font-size: 15px;
@@ -157,7 +169,8 @@ p {
 .nav>li>a:hover {
   text-decoration: none;
   background-color: transparent;
-  color: #3bc0c3;
+  /*color: #3bc0c3;*/
+  color: #fff;
 }
 .navbar-toggle .icon-bar {
   background-color: #ffffff;

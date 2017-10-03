@@ -13,12 +13,14 @@
 //= require turbolinks
 //= require jquery.min
 //= require jquery.easing.1.3.min
+//= require select2
 //= require SmoothScroll
 //= require bootstrap
 //= require bootstrap.min
 
 //jQuery for page scrolling feature - requires jQuery Easing plugin
-      $(function() {
+$(function() {
+
           $('.navbar-nav a').bind('click', function(event) {
               var $anchor = $(this);
               $('html, body').stop().animate({
@@ -27,3 +29,7 @@
               event.preventDefault();
           });
       });
+
+$(function() {
+  $('.form-control').select2();
+});

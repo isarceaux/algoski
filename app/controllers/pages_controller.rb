@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def landingpage
-
+    @resort_count = Resort.group('ville').pluck('ville').count
   end
 
   def about
