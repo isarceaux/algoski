@@ -1,20 +1,14 @@
-https://trello.com/b/gmbSssnO/tignes-scrapping
+Ceci est une nouvelle version du précédent projet Tignes-Scrapping réalisé dans le cadre de The Hacking Project.
 
--- D'après une idée originale d'isarceaux --
+L'idée est de faire un beau site en utilisant un template déjà bien pensé : Velonic http://coderthemes.com/velonic_3.0/index.html 
 
-Coucou toi !
+Le back partira de ce qui a déjà été fait auparavant sur le projet Tignes-Scrapping.
 
-Avec Isa et Hong nous avons pour projet de créer un service à destination des particuliers qui louent leur chalet/appart au ski. Nous voulons leur proposer un compte-rendu des prix à la nuitée/semaine dans leur station et pour des biens similaires au leur.
-
-Nous avons constaté que les loueurs particuliers n'ont pas forcément conscience des prix pratiqués par leurs concurrents. De plus, cette recherche peut être très fastidieuse pour un novice en scrapping :)
-
-Il s'agit pour nous de développer un outil d'automatisation pour scrapper les prix sur les sites de réservation en ligne. Et de créer un joli site web à destination de nos utilisateurs avec formulaire, data viz...
-
-Ce projet est un MVP et nous avons beaucoup d'idées pour le développer (sur d'autres niches, secteur B2B, proposer d'autres services...)
-
-Nous serons accompagnés par deux mentors : JB qui est dev chez Botify, et Vincent, un pote d'Isa qui pèse en Ruby.
-
--- To-do lists !! --
-
-@marinakiri
-- N'oublie de déplacer l'import de boostrap dans les fichiers scss : sinon quand tu vas rajouter des règles elles seront ecrasées par celles de bootstrap qui arrivent après !!
+--- 
+Voici les premières to-dos :
+- déployer le nouveau projet sur l'ancien heroku
+- mettre en place le nouveau template
+- évolutions du back
+  - rajouter des entrées supplémentaires pour le scrapping (afin d'avoir un dashboard plus intéressant)
+  - mettre en place la mise à jour d'une entrée dans le scrapping (pour pouvoir quand même utiliser la base existante)
+  - mettre en place le paiement avec stripe

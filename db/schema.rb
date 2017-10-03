@@ -42,13 +42,6 @@ ActiveRecord::Schema.define(version: 20171002093907) do
     t.index ["ville_url"], name: "index_resorts_on_ville_url"
   end
 
-  create_table "searches", force: :cascade do |t|
-    t.string "ville"
-    t.integer "number_of_guests"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "subscriptions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
