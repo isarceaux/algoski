@@ -75,7 +75,7 @@ p {
   font-weight: 700;
 }
 #macbook {
-  background: url("../images/mac.png");
+  background: url('/assets/mac.png');
   width: 967px;
   height: 484px;
   margin: 0px auto;

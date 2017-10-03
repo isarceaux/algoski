@@ -2,3 +2,36 @@
  *= require_self
  *= require_tree .
  */
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url('http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,300,400,600,700,900,400italic&subset=latin-ext');
+@import url('http://fonts.googleapis.com/css?family=Cuprum:400,700&subset=latin-ext');
+
+.brightness
+{
+  -webkit-filter: brightness(0.5);
+}
+
+navbar-brand:hover
+{
+  color:white;
+}
+
+.navbar-logo 
+{
+  float: left;
+    height: 50px;
+  line-height: 50px;
+  padding-right: 10px;
+  img:hover
+  {
+    -webkit-filter:none;
+  }
+}
+
+.navbar-brand:hover
+{
+  color:white;
+  -webkit-filter:none;
+}

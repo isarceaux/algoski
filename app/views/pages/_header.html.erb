@@ -1,0 +1,79 @@
+<header>
+      <section class="hero">
+        <div class="container">
+          <div class="row nav-wrapper">
+            <nav class="navbar navbar-custom">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-logo" href="/">
+                        <%= image_tag('logo-grey.png', size:'30', class:'brightness')%>
+                      </a>
+                      <a class="navbar-brand brightness" href="/">
+                          Algoski
+                      </a>
+                  </div>
+
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#how">Comment ça marche ?</a></li>
+                        <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#pricing">Prix</a></li>
+                    <li><a href="#clients">Technologie</a></li>
+                    <% if user_signed_in? %>
+                      <li><%= link_to "Mon tableau de bord", dashboard_path, class:"dropdown-toggle" %></li>
+                      <li><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
+                      <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
+                  <% else %>
+                      <li><%= link_to "Se connecter", new_user_session_path, class:"btn-signup btn-primary" %></li>
+                  <% end %>
+                      </ul>
+                  </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav> <!-- end nav -->
+          </div> <!-- End row -->
+
+          <div class="row hero-content text-center">
+            <h1 class="">Vous louez un bien à la montage ?</h1>
+            <h2>Visualisez les prix de tous vos concurrents sur la saison</h2>
+            <div id="macbook">
+                  <div id="tour" class="carousel slide" data-ride="carousel">
+                      
+                      <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#tour" data-slide-to="0" class="active"></li>
+                    <li data-target="#tour" data-slide-to="1"></li>
+                    <li data-target="#tour" data-slide-to="2"></li>
+                </ol>
+
+                      <div class="carousel-inner">
+                        <!-- slide item -->
+                          <div class="item active">
+                              <%= image_tag 'stock1.jpg', alt:'slide-img' %>
+                              <!-- <img src="images/stock1.jpg" alt="slide-img"> -->
+                          </div>
+                          <!-- slide item -->
+                        <div class="item">
+                            <%= image_tag 'stock2.jpg', alt:'slide-img' %>
+                            <!-- <img src="images/stock2.jpg" alt="slide-img"> -->
+                        </div>
+                        <!-- slide item -->
+                        <div class="item">
+                            <%= image_tag 'stock3.jpg', alt:'slide-img' %>
+                            <!-- <img src="images/stock3.jpg" alt="slide-img"> -->
+                        </div>
+                      </div> <!-- /.carousel-inner -->
+
+                  </div> <!-- /#tour -->
+              </div>
+          </div>
+        </div> <!-- end container -->
+      </section> <!-- end hero -->
+    </header>

@@ -11,4 +11,19 @@
 // about supported directives.
 //
 //= require turbolinks
-//= require_tree .
+//= require jquery.min
+//= require jquery.easing.1.3.min
+//= require SmoothScroll
+//= require bootstrap
+//= require bootstrap.min
+
+//jQuery for page scrolling feature - requires jQuery Easing plugin
+      $(function() {
+          $('.navbar-nav a').bind('click', function(event) {
+              var $anchor = $(this);
+              $('html, body').stop().animate({
+                  scrollTop: $($anchor.attr('href')).offset().top - 0
+              }, 1500, 'easeInOutExpo');
+              event.preventDefault();
+          });
+      });
