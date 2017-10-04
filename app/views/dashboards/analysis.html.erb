@@ -3,13 +3,148 @@
 <!--Main Content Start -->
 <section class="content">
     
-   <%= render 'header' %>
+  <%= render 'header' %>
+  
+  <div class="wraper container-fluid">
+    
+    <div class="page-title"> 
+        <h3 class="title">Voici les analyses concernant la station de votre choix</h3> 
+    </div>
 
-    <h1>Dashboards#synthesis</h1>
-    <p>Find me in app/views/dashboards/synthesis.html.erb</p>
+
+
+<!-- Key figures of the market -->
+
+  <!-- First row with the four widget -->
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+          <div class="widget-panel widget-style-2 white-bg">
+              <i class="ion-eye text-pink"></i> 
+              <h2 class="m-0 counter">50</h2>
+              <div>Daily Visits</div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="widget-panel widget-style-2 white-bg">
+              <i class="ion-wifi text-purple"></i> 
+              <h2 class="m-0 counter">8956</h2>
+              <div>Sales</div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="widget-panel widget-style-2 white-bg">
+              <i class="ion-android-contacts text-info"></i> 
+              <h2 class="m-0 counter">1268</h2>
+              <div>New Orders</div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="widget-panel widget-style-2 white-bg">
+              <i class="ion-android-contacts text-success"></i> 
+              <h2 class="m-0 counter">145</h2>
+              <div>New Users</div>
+          </div>
+      </div>
+    </div> <!-- end row -->
+
+
+
+<!-- Average revenue per month -->
+    <div class="row">                    
+
+      <div class="col-lg-12">
+        <div class="portlet"><!-- /primary heading -->
+            <div class="portlet-heading">
+                <h3 class="portlet-title text-dark text-uppercase">
+                    Yearly Sales Report
+                </h3>
+                <div class="portlet-widgets">
+                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                    <span class="divider"></span>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                    <span class="divider"></span>
+                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="portlet2" class="panel-collapse collapse in">
+                <div class="portlet-body">
+                    <div id="morris-area-example" style="height: 320px;"></div>
+                </div>
+            </div>
+        </div> <!-- /Portlet -->
+      </div>
+          
+    </div> <!-- end of row -->
+
+
+
+<!-- Type of housing and average revenue per type of housing -->
+
+    <div class="row">
+              
+      <div class="col-lg-6">
+          <div class="portlet"><!-- /primary heading -->
+              <div class="portlet-heading">
+                  <h3 class="portlet-title text-dark">
+                      Roated Chart
+                  </h3>
+                  <div class="portlet-widgets">
+                      <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                      <span class="divider"></span>
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                      <span class="divider"></span>
+                      <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+              <div id="portlet2" class="panel-collapse collapse in">
+                  <div class="portlet-body">
+                      <div id="roated-chart"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+  <!-- Donut Chart -->
+      <div class="col-lg-6">
+          <div class="portlet"><!-- /primary heading -->
+              <div class="portlet-heading">
+                  <h3 class="portlet-title text-dark">
+                      Donut Chart 
+                  </h3>
+                  <div class="portlet-widgets">
+                      <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                      <span class="divider"></span>
+                      <a data-toggle="collapse" data-parent="#accordion1" href="#portlet3"><i class="ion-minus-round"></i></a>
+                      <span class="divider"></span>
+                      <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+              <div id="portlet3" class="panel-collapse collapse in">
+                  <div class="portlet-body">
+                      <div id="morris-donut-example" style="height: 300px;"></div>
+                  </div>
+              </div>
+          </div> <!-- /Portlet -->
+      </div>
+
+    </div> <!-- end row -->
+
+
+
+
+
+
+
+
+
+  </div>
 
     <%= render 'footer' %>
 
 </section>
-<%= javascript_include_tag 'application_dashboard.js', 'data-turbolinks-track': 'reload'%>
+
 <%= javascript_include_tag 'dashboardanalysisjs/application.js', 'data-turbolinks-track': 'reload'%>

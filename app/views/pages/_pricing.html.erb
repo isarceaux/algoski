@@ -6,56 +6,48 @@
         <h2 class="title">Tarifs</h2>
         <p class="slogan">Déjouez la concurrence et optimisez vos locations : louez plus, louez mieux.</p>
       </div>
-    </div>
+      </div>
+      <div class="row text-center">
+      <div class="col-sm-offset-1 col-sm-10">
+        <p> Ils comprennent un accès illimité à la plateforme Algoski. Deux fordaits s'offrent à vous. Le premier donne accès aux données d'une seule station, utile si vous êtes un particulier propriétaire dans une seule station. Le second s'adresse plutôt aux professionnels de l'immobilier, ou aux particuliers multi-propriétaires qui souhaiterait évaluer la concurrence sur plusieurs stations. Dans tous les cas vous aurez accès à la même profondeur d'analyse et au tableau détaillé des annonces de vos concurrents, soit sur une station soit sur toutes les stations de notre base.</p>
+      </div>
+      </div>
+
     <!-- end row -->
 
         <div class="row pt80">
             <div class="col-md-10 col-md-offset-1">
-                <div class="row">
+                <div class="row pricing-container">
+
                   <div class="col-sm-4">
                     <div class="price_card text-center">
-              <div class="header bg-info">
-                <span class="price">29€</span>
-                <span class="name">Offre mini</span>
-              </div>
-              <ul class="price-features">
-                <li>Saison 2017-2018</li>
-                <li>1 station de ski</li>
-                <li>Limités aux appartements et chalets d'une même capacité d'accueil</li>
-              </ul>
-              <button class="btn btn-info w-md">Sign Up</button>
-            </div> <!-- end Pricing_card -->
+                      <div class="header bg-pink">
+                        <span class="name">PARTICULIER</span>
+                        <span class="price">49€</span>
+                      </div>
+                      <ul class="price-features">
+                        <li>Saison 2017-2018</li>
+                        <li>Tous appartements et chalets</li>
+                        <li><span style="font-weight: bold">1 station de ski</span>, au choix parmis nos <%= @resort_count %> stations</li>
+                      </ul>
+                      <button class="btn btn-pink w-md">S'inscrire</button>
+                    </div>
+                    <span class="tip">* Plus répandue chez les particuliers propriétaires</span>
                   </div> <!-- end col -->
 
                   <div class="col-sm-4">
                     <div class="price_card text-center">
-              <div class="header bg-pink">
-                <span class="price">49€</span>
-                <span class="name">Offre classique</span>
-              </div>
-              <ul class="price-features">
-                <li>Saison 2017-2018</li>
-                <li>1 station de ski</li>
-                <li>Tous appartements et chalets</li>
-              </ul>
-              <button class="btn btn-pink w-md">Sign Up</button>
-            </div>
-            <span class="tip">* Plus répandue chez les particuliers propriétaires</span>
-                  </div> <!-- end col -->
-
-                  <div class="col-sm-4">
-                    <div class="price_card text-center">
-              <div class="header bg-purple">
-                <span class="price">249€</span>
-                <span class="name">Offre pro</span>
-              </div>
-              <ul class="price-features">
-                <li>Saison 2017-2018</li>
-                <li>Toutes les stations de ski de notre base</li>
-                <li>Tous appartements et chalets</li>
-              </ul>
-              <button class="btn btn-purple w-md">Sign Up</button>
-            </div> <!-- end Pricing_card -->
+                      <div class="header bg-purple">
+                        <span class="name">PROFESSIONNEL</span>
+                        <span class="price">249€</span>
+                      </div>
+                      <ul class="price-features">
+                        <li>Saison 2017-2018</li>
+                        <li>Tous appartements et chalets</li>
+                        <li style="font-weight: bold">Toutes les stations de ski de notre base : <%= @resort_count %> stations</li>
+                      </ul>
+                      <button class="btn btn-purple w-md">S'inscrire</button>
+                    </div> <!-- end Pricing_card -->
                   </div> <!-- end col -->
                 </div> <!-- end row -->
             </div> <!-- end Col-10 -->

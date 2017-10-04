@@ -74,6 +74,19 @@ navbar-brand:hover
 
 }
 
+.pricing-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 480px) {
+  .pricing-container
+  {
+    flex-direction: column;
+  }
+}
 
 
 
