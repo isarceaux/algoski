@@ -3,15 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	  <meta name="description" content="LandingPage">
+	  <meta name="description" content="Dashboard">
 	  <meta name="author" content="Algoski">
 
 		<title>Algoski - Le comparateur des locations au ski</title>
 
 	    <!-- Bootstrap core CSS and other assets using asset pipeline-->
-	    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-	    
-	    <%= favicon_link_tag 'logo.png' %>
+	    <%= stylesheet_link_tag  'application_dashboard', media: 'all', 'data-turbolinks-track': 'reload' %>
+	    <%= stylesheet_link_tag  'dashboardanalysiscss/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	   
+	    <%= favicon_link_tag 'logo-white.png' %>
 	    
 	</head>
 
@@ -29,8 +30,7 @@
 		
 		<%= render 'cookies_eu/consent_banner' %>
   	
-		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
-
+  	
 	</body>
 
 </html>

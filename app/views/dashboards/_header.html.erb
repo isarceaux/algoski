@@ -1,0 +1,23 @@
+<!-- Header -->
+<header class="top-head container-fluid">
+    <button type="button" class="navbar-toggle pull-left">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    
+   
+    
+    <!-- Right navbar -->
+    <ul class="list-inline navbar-right top-menu top-right-menu">  
+       <% if user_signed_in? %>
+            <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
+        <% else %>
+            <li><%= link_to "Se connecter", new_user_session_path %></li>
+        <% end %>
+    </ul>
+    <!-- End right navbar -->
+
+</header>
+<!-- Header Ends -->

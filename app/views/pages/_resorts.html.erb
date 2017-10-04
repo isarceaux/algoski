@@ -10,7 +10,7 @@
           <div class="row">
               <div class="col-md-offset-3 col-md-6">
                 <p>Vérifier que votre station est dans la liste :</p>
-                <%= form_tag({controller: "users", action: "dashboard"}, method: :get, class:"form-inline col-xs-12" ) do %>
+                <%= form_tag({controller: "pages", action: "home"}, method: :get, class:"form-inline col-xs-12" ) do %>
                 <div class="input-group">
                     <%= select_tag(:ville_searched, options_for_select(list_station), class:'form-control select-resort', multiple: false) %>
                 <% end %>          

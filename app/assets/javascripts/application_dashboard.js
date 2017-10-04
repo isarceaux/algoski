@@ -12,23 +12,12 @@
 //
 //= require turbolinks
 //= require jquery
-//= require jquery.easing.1.3.min
-//= require select2
-//= require SmoothScroll
+//= require pace.min
+//= require modernizr.min
+//= require wow.min
+//= require jquery.scrollTo.min
+//= require jquery.nicescroll
+//= require jquery.app
 //= require bootstrap.min
 
-//jQuery for page scrolling feature - requires jQuery Easing plugin
-$(function() {
 
-          $('.navbar-nav a').bind('click', function(event) {
-              var $anchor = $(this);
-              $('html, body').stop().animate({
-                  scrollTop: $($anchor.attr('href')).offset().top - 0
-              }, 1500, 'easeInOutExpo');
-              event.preventDefault();
-          });
-      });
-
-$(function() {
-  $('.form-control').select2();
-});
