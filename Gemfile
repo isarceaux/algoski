@@ -28,6 +28,7 @@ gem 'cookies_eu'
 gem 'font-awesome-sass'
 gem 'ionicons-rails'
 gem 'figaro'
+gem 'gon'
 
 
 group :development, :test do

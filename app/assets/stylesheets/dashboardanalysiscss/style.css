@@ -183,6 +183,12 @@ aside.left-panel.lg + .content {
   display: block;
 }
 
+.nav-title
+{
+  height:30px;
+  vertical-align: middle;
+}
+
 /******** 2.2 Navigation *******/
 
 .navigation {

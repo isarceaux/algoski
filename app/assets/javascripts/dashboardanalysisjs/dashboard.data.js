@@ -1,3 +1,17 @@
+// Preparing the data to be used in graphs
+// var data_average = [] ;
+// var g = gon.averages ;
+
+// for(var i = 0; i < g.length ; i++ ){
+//     data_average.push({ y: g[i].start_date, b: g[i].average_value});
+//     }
+
+// console.log(g[i]);
+
+
+
+
+
 // Morris Chart for average price per week
 
     !function($) {
@@ -14,18 +28,12 @@
             Morris.Area({
                 element: 'morris-area-example',
                 lineWidth: 0,
-                data: [
-                    { y: '2009', b: 10 },
-                    { y: '2010', b: 10 },
-                    { y: '2011', b: 10 },
-                    { y: '2012', b: 20 },
-                    { y: '2013', b: 10 },
-                    { y: '2014', b: 10 },
-                    { y: '2015', b: 10 }
-                ],
-                xkey: 'y',
-                ykeys: ['b'],
-                labels: ['Series B'],
+                data: gon.averages,
+                xkey: 'start_date',
+                ykeys: ['average_value'],
+                labels: ['7 jours'],
+                postUnits: '€',
+                yLabelFormat: function(y) {return y = Math.round(y)*7;},
                 resize: true,
                 lineColors: ['#6e8cd7']
             });

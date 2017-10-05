@@ -1,5 +1,6 @@
 <%= render 'aside' %>
 
+
 <!--Main Content Start -->
 <section class="content">
     
@@ -12,37 +13,40 @@
     </div>
 
 
-
 <!-- Key figures of the market -->
 
   <!-- First row with the four widget -->
     <div class="row">
       <div class="col-lg-3 col-sm-6">
           <div class="widget-panel widget-style-2 white-bg">
-              <i class="ion-eye text-pink"></i> 
-              <h2 class="m-0 counter">50</h2>
-              <div>Daily Visits</div>
+              <i class="ion-eye text-info"></i> 
+              <h2 class="m-0 counter"><%= @classifieds_count_local %></h2>
+              <h4>Annonces</h4>
+              <div>Pour cette station</div>
           </div>
       </div>
       <div class="col-lg-3 col-sm-6">
           <div class="widget-panel widget-style-2 white-bg">
-              <i class="ion-wifi text-purple"></i> 
-              <h2 class="m-0 counter">8956</h2>
-              <div>Sales</div>
+              <i class="ion-eye text-purple"></i> 
+              <h2 class="m-0 counter"><%= @classifieds_count_global %></h2>
+              <h4>Annonces</h4>
+              <div>Dans notre base</div>
           </div>
       </div>
       <div class="col-lg-3 col-sm-6">
           <div class="widget-panel widget-style-2 white-bg">
-              <i class="ion-android-contacts text-info"></i> 
-              <h2 class="m-0 counter">1268</h2>
-              <div>New Orders</div>
+              <i class="ion-home text-info"></i> 
+              <h2 class="m-0 counter"><%= @housings_count_local %></h2>
+              <h4>Logements</h4>
+              <div>Pour cette station</div>
           </div>
       </div>
       <div class="col-lg-3 col-sm-6">
           <div class="widget-panel widget-style-2 white-bg">
-              <i class="ion-android-contacts text-success"></i> 
-              <h2 class="m-0 counter">145</h2>
-              <div>New Users</div>
+              <i class="ion-home text-purple"></i> 
+              <h2 class="m-0 counter"><%= @housings_count_global %></h2>
+              <h4>Logements</h4>
+              <div>Dans notre base</div>
           </div>
       </div>
     </div> <!-- end row -->
@@ -56,7 +60,7 @@
         <div class="portlet"><!-- /primary heading -->
             <div class="portlet-heading">
                 <h3 class="portlet-title text-dark text-uppercase">
-                    Prix moyens à la semaine
+                    Prix moyens à la semaine (€)
                 </h3>
                 <div class="portlet-widgets">
                     <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
