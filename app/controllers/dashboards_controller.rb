@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     @averageprice = 100
     gon.lowerprice = 50
     
-    current_resort = Resort.find(19)
+    current_resort = Resort.find_by(ville:'tignes')
     current_number_of_guests = 4
     # To be changed with params and current_user data
 
