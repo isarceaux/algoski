@@ -2137,3 +2137,9 @@ aside.left-panel.collapsed span.nav-label {
     display: none;
   }
 }
+
+.morris-donut-style
+{
+  height: 240px;
+  margin-bottom: 0;
+}

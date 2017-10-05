@@ -3,18 +3,25 @@
 //= require pace.min
 //= require modernizr.min
 //= require wow.min
+//= require jquery.scrollTo.min
 //= require jquery.nicescroll
 //= require dashboardanalysisjs/moment-2.2.1
 
+//Counterup
+//= require dashboardanalysisjs/waypoints.min
+//= require dashboardanalysisjs/jquery.counterup.min
+
+//Morris chart
+//= require dashboardanalysisjs/morris.min
+//= require dashboardanalysisjs/raphael.min
+
+//C3 chart
+//= require dashboardanalysisjs/d3.v3.min
+//= require dashboardanalysisjs/c3
 
 
 //= require jquery.app
-//= require dashboardanalysisjs/morris.min
-//= require dashboardanalysisjs/raphael.min
-//= require dashboardanalysisjs/morris.init
-//= require dashboardanalysisjs/c3
-//= require dashboardanalysisjs/d3.v3.min
-//= require dashboardanalysisjs/c3-chart.init
+//= require dashboardanalysisjs/dashboard.data
 
 /* ==============================================
              Counter Up

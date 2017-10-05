@@ -49,14 +49,14 @@
 
 
 
-<!-- Average revenue per month -->
+<!-- Average revenue per month - Morris Area Chart -->
     <div class="row">                    
 
       <div class="col-lg-12">
         <div class="portlet"><!-- /primary heading -->
             <div class="portlet-heading">
                 <h3 class="portlet-title text-dark text-uppercase">
-                    Yearly Sales Report
+                    Prix moyens à la semaine
                 </h3>
                 <div class="portlet-widgets">
                     <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
@@ -79,31 +79,41 @@
 
 
 
-<!-- Type of housing and average revenue per type of housing -->
+<!-- Type of housing and average revenue per type of housing - Roated chart C3-->
 
     <div class="row">
               
       <div class="col-lg-6">
-          <div class="portlet"><!-- /primary heading -->
-              <div class="portlet-heading">
-                  <h3 class="portlet-title text-dark">
-                      Roated Chart
-                  </h3>
-                  <div class="portlet-widgets">
-                      <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
-                      <span class="divider"></span>
-                      <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
-                      <span class="divider"></span>
-                      <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
-                  </div>
-                  <div class="clearfix"></div>
-              </div>
-              <div id="portlet2" class="panel-collapse collapse in">
-                  <div class="portlet-body">
-                      <div id="roated-chart"></div>
-                  </div>
-              </div>
-          </div>
+        <div class="portlet"><!-- /primary heading -->
+            <div class="portlet-heading">
+                <h3 class="portlet-title text-dark">
+                    Types de logements
+                </h3>
+                <div class="portlet-widgets">
+                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                    <span class="divider"></span>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet3"><i class="ion-minus-round"></i></a>
+                    <span class="divider"></span>
+                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="portlet3" class="panel-collapse collapse in">
+                <div class="portlet-body" style="height: 350px;">
+                    <div id="morris-donut-housing" class="morris-donut-style"></div>
+                    <div class="row text-center m-t-30 m-b-30">
+                      <div class="col-xs-6">
+                          <h4>3.2</h4>
+                          <small class="text-muted">Chambres en moyenne</small>
+                      </div>
+                      <div class="col-xs-6">
+                          <h4>1.3</h4>
+                          <small class="text-muted">Salles de bain en moyenne</small>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /Portlet -->
       </div>
 
 
@@ -112,7 +122,7 @@
           <div class="portlet"><!-- /primary heading -->
               <div class="portlet-heading">
                   <h3 class="portlet-title text-dark">
-                      Donut Chart 
+                      Commentaires
                   </h3>
                   <div class="portlet-widgets">
                       <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
@@ -124,8 +134,18 @@
                   <div class="clearfix"></div>
               </div>
               <div id="portlet3" class="panel-collapse collapse in">
-                  <div class="portlet-body">
-                      <div id="morris-donut-example" style="height: 300px;"></div>
+                  <div class="portlet-body" style="height: 350px;">
+                      <div id="morris-donut-comments" class="morris-donut-style"></div>
+                      <div class="row text-center m-t-30 m-b-30">
+                        <div class="col-xs-6">
+                            <h4>4.8</h4>
+                            <small class="text-muted">Note moyenne des annonces</small>
+                        </div>
+                        <div class="col-xs-6">
+                            <h4>12</h4>
+                            <small class="text-muted">Nombre moyen de commentaires</small>
+                        </div>
+                      </div>
                   </div>
               </div>
           </div> <!-- /Portlet -->
@@ -133,6 +153,78 @@
 
     </div> <!-- end row -->
 
+  <!-- Progress bar with additional statistics -->
+    <div class="row">
+
+    <!-- First indicator -->
+      <div class="col-lg-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Taux d'annonces proposant la réservation instantannée</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="progress progress-lg">
+                      <div class="progress-bar progress-bar-pink" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                          45%
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Second indicator -->
+      <div class="col-lg-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Taux d'annonces avec une durée de séjour de 7 nuits au moins</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="progress progress-lg">
+                      <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
+                          78%
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+    <!-- Third indicator -->
+      <div class="col-lg-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Taux d'annonces acceptant le paiement en ligne</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="progress progress-lg">
+                      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100" style="width: 36%;">
+                          36%
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Fourth indicator -->
+      <div class="col-lg-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Taux d'annonces acceptant le paiement en direct</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="progress progress-lg">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" style="width: 96%;">
+                          96%
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
 
 
 
