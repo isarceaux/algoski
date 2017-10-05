@@ -7,10 +7,13 @@
         <span class="icon-bar"></span>
     </button>
     
-   
+    <div class="custom-mid-header col-md-8">
+        <h3><%= titleize(@station_name) %></h3>
+        <h4>capacité d'accueil <%= @number_of_guests %> personnes</h4>
+    </div>
     
     <!-- Right navbar -->
-    <ul class="list-inline navbar-right top-menu top-right-menu">  
+    <ul class="list-inline navbar-right top-menu top-right-menu hidden-xs">  
        <% if user_signed_in? %>
             <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -21,3 +24,5 @@
 
 </header>
 <!-- Header Ends -->
+
+       

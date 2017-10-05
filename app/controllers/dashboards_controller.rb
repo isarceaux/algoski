@@ -9,6 +9,9 @@ class DashboardsController < ApplicationController
     current_resort = Resort.find_by(ville:'tignes')
     current_number_of_guests = 4
     # To be changed with params and current_user data
+    
+    @station_name = current_resort.ville
+    @number_of_guests = current_number_of_guests
 
     @classifieds_count_local = Classified.where(resort:current_resort).count
     @classifieds_count_global = Classified.all.count

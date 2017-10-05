@@ -304,6 +304,24 @@ header {
   padding-left: 0px;
 }
 
+.custom-mid-header
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  height:58px;
+}
+
+.custom-mid-header h3, .custom-mid-header h4
+{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  margin-left: 20px;
+}
+
+
 .navbar-toggle .icon-bar {
   background-color: #b3b3be;
 }
