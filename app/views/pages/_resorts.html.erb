@@ -22,7 +22,7 @@
         
         <div class="col-md-6">
 
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div id="myCarousel" class="carousel slide hidden-xs" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -35,7 +35,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
-                <%= image_tag 'resorts/chamonix-small.jpg', alt:'chamonix'%>
+                <%= image_tag( 'resorts/chamonix-small.jpg', alt:'chamonix')%>
                 <div class="carousel-caption">
                   <h3>Chamonix</h3>
                 </div>
@@ -64,9 +64,55 @@
 
               <div class="item carousel-resort-pic">
                 <%= image_tag 'resorts/meribel-small.jpg', alt:'meribel'%>
-                <!-- <div class="carousel-caption">
-                  <h3>Méribel</h3>
-                </div> -->
+              </div>
+
+            </div>
+
+          </div>
+
+      <!-- Carousel for small devices -->
+          <div id="myCarousel" class="carousel slide hidden-md" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <%= image_tag( 'resorts/chamonix-small-min.jpg', alt:'chamonix')%>
+                <div class="carousel-caption">
+                  <h3>Chamonix</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/tignes-small-min.jpg', alt:'tignes'%>
+                <div class="carousel-caption">
+                  <h3>Tignes</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/samoens-small-min.jpg', alt:'samoens'%>
+                <div class="carousel-caption">
+                  <h3>Samoëns</h3>
+                </div>
+              </div>
+
+              <div class="item">
+                <%= image_tag 'resorts/les-arcs-small-min.jpg', alt:'les arcs'%>
+                <div class="carousel-caption">
+                  <h3>Les Arcs</h3>
+                </div>
+              </div>
+
+              <div class="item carousel-resort-pic">
+                <%= image_tag 'resorts/meribel-small-min.jpg', alt:'meribel'%>
               </div>
 
             </div>

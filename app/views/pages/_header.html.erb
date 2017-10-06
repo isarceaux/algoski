@@ -13,7 +13,7 @@
                         <span class="icon-bar"></span>
                       </button>
                       <a class="navbar-logo" href="/">
-                        <%= image_tag('logo-white.png', size:'30', class:'brightness')%>
+                        <%= image_tag('logo-white-min.png', size:'30', class:'brightness')%>
                       </a>
                       <a class="navbar-brand brightness" href="/">
                           Algoski
@@ -55,7 +55,7 @@
                     <li data-target="#tour" data-slide-to="2"></li>
                 </ol>
 
-                      <div class="carousel-inner">
+                      <div class="carousel-inner hidden-xs">
                         <!-- slide item -->
                           <div class="item active">
                               <%= image_tag 'stock1.jpg', alt:'slide-img' %>
@@ -67,6 +67,22 @@
                         <!-- slide item -->
                         <div class="item">
                             <%= image_tag 'stock3.jpg', alt:'slide-img' %>
+                        </div>
+                      </div> <!-- /.carousel-inner -->
+
+        <!-- Carousel version for mobile -->
+                      <div class="carousel-inner hidden-md">
+                        <!-- slide item -->
+                          <div class="item active">
+                              <%= image_tag 'stock1-min.jpg', alt:'slide-img' %>
+                          </div>
+                          <!-- slide item -->
+                        <div class="item">
+                            <%= image_tag 'stock2-min.jpg', alt:'slide-img' %>
+                        </div>
+                        <!-- slide item -->
+                        <div class="item">
+                            <%= image_tag 'stock3-min.jpg', alt:'slide-img' %>
                         </div>
                       </div> <!-- /.carousel-inner -->
 
