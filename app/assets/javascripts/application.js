@@ -12,6 +12,7 @@
 //
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
 //= require jquery.easing.1.3.min
 //= require select2
 //= require SmoothScroll
