@@ -1,32 +1,26 @@
-<div class="container-fluid" >
-  <%= bootstrap_devise_error_messages! %>
-  <div class="row">
-    <div class="form col-md-offset-2 col-md-8 form-contour">
-      <div class="form-head">
-      </div> 
-      <div class="form-body">
-        <div class="row">
-         
-          <div class="form-body-title col-md-offset-1 col-md-10 text-center">
-            <h1><%= t('.forgot_your_password', default: 'Forgot your password?') %></h1>
+<div class="wrapper-page animated fadeInDown">
+  <div class="panel panel-color panel-primary">
+
+    <div class="text-center">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: "form" }) do |f| %>
+          <div class="alert alert-info alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              Entrez votre <b>mail</b> et nous vous envoyons un mail avec des instructions !
           </div>
 
-            <div class="form-body-info col-md-offset-1 col-md-10">
-              <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role: "form" }) do |f| %>
-              <div class="form-group col-md-offset-2 col-md-8">
-                <%= f.label :email %>
-                <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-              </div>
-              <div class= "form-group col-md-offset-2 col-md-8 text-center" >
-                <%= f.submit t('.send_me_reset_password_instructions', default: 'Send me reset password instructions'), class: 'btn btn-form' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>       
-    </div>
+          <div class="form-group m-b-0"> 
+              <div class="input-group"> 
+                  <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: 'mail' %>
+                  <!-- <input type="password" class="form-control" placeholder="Enter Email">  -->
+                  <span class="input-group-btn">
+                  <%= f.submit 'Envoyer', class: 'btn btn-primary' %>
+                  <!-- <button type="submit" class="btn btn-primary">Envoyer</button>  -->
+                  </span> 
+              </div> 
+          </div> 
+      <% end %>
+    </div>              
   </div>
-
 </div>
 
 
