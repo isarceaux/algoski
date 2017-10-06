@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'dashboards/profile'
 
-  get 'dashboards', to: 'dashboards#profile'
+  get 'dashboards', to: 'dashboards#analysis'
 
   # get 'subscriptions/destroy'
 

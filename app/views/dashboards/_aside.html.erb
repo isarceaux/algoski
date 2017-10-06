@@ -15,7 +15,7 @@
     <!-- Navbar Start -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li>
+            <li class="active">
             <%= link_to dashboards_analysis_path do %>
                 <i class="ion-stats-bars"></i> 
                 <span class="nav-label">Analyses</span>
@@ -30,19 +30,27 @@
             </li>
 
             <li>
-            <%= link_to dashboards_data_table_path do %>
+            <%= link_to '#' do %>
                 <i class="ion-grid"></i> 
                 <span class="nav-label">Tableau</span>
             <% end %>
             </li>
 
-            <li class="active">
-            <%= link_to dashboards_profile_path do %>
-                <i class="ion-person"></i> 
-                <span class="nav-label">Profile</span>
+            <% if user_signed_in? %>
+                <li>
+                <%= link_to edit_user_registration_path do %>
+                    <i class="ion-person"></i> 
+                    <span class="nav-label">Mon compte</span>
+                <% end %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to new_user_session_path do %>
+                    <i class="ion-person"></i> 
+                    <span class="nav-label">Se connecter</span>
+                    <% end %>
+                </li>
             <% end %>
-            </li>
-                
         </ul>
     </nav>
         
