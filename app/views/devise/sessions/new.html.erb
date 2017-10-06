@@ -1,57 +1,59 @@
-<div class="container-fluid" >
-  <%= bootstrap_devise_error_messages! %>
-  <div class="row">
-    <div class="form col-md-offset-2 col-md-8 form-contour">
-        <div class="form-head">
-        </div> 
-        <div class="form-body">
-          <div class="row">
-            <div class="form-body-title col-md-offset-1 col-md-10 text-center">
-              <h1>Bonjour !</h1>
-              <p>Renseignez vos identifiants afin d'accéder à votre tableau de bord :</p>
-            </div>
-
-            <div class="form-body-info col-md-offset-1 col-md-10">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
-              <div class="form-group col-md-offset-2 col-md-8"><%= f.email_field :email, autofocus:true, class: 'form-control', placeholder: 'Email'  %>
-              </div>
-              <div class="form-group col-md-offset-2 col-md-8"><%= f.password_field :password, class: 'form-control', placeholder: 'Mot de passe' %>
-              </div>
-              <div class="form-group col-md-offset-2 col-md-8 text-right">
-              <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
-                <%= link_to t('.forgot_your_password', default: 'Mot de passe oublié?'), new_password_path(resource_name) %><br />
-              <% end %>
-              </div>
-              <div class="btn form-group col-md-offset-2">
-                <% if devise_mapping.rememberable? %>
-                  <div class="checkbox">
-                    <%= f.label :remember_me do %>
-                      <%= f.check_box :remember_me %> <%= t('.remember_me', default: 'Enregistrer') %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-              <div class="form-group col-md-offset-2 col-md-8 text-center"><%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-form' %>
-              </div>
-             </div>
-
-             <%end%>
-          </div>
+ <div class="wrapper-page animated fadeInDown">
+    <div class="panel panel-color panel-primary">
+        <div class="panel-heading"> 
+           <h3 class="text-center m-t-10"> Se connecter à <strong>Algoski</strong> </h3>
         </div>
-        <hr>
-        <div class="form-footer">
-          <div class="row">
-            <div class= "col-md-offset-1 col-md-10 text-center">
-              <div class="form-footer-title col-md-offset-2 col-md-8 text-center">Pas encore inscrit ?
-              </div>
-              <div class="form-group col-md-offset-2 col-md-8 text-center" > 
-                <% if devise_mapping.registerable? && controller_name != 'registrations' %>
-                <%= link_to t('.sign_up', default: 'Créer un compte'), new_registration_path(resource_name), class: 'btn btn-form' %><br />
-                <% end %>
-              </div> 
+        
+        <div class='form-horizontal m-t-40'>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
+
+            <div class="form-group ">
+                <div class="col-xs-12">
+                    <%= f.email_field :email, autofocus:true, class: 'form-control', placeholder: 'Email', type: 'text' %>
+                </div>
             </div>
-          </div>
-        </div>   
-    </div>
+
+            <div class="form-group ">    
+                <div class="col-xs-12">
+                    <%= f.password_field :password, class: 'form-control', placeholder: 'Mot de passe', type: 'password' %>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <div class="col-xs-12 checkbox">
+                    <% if devise_mapping.rememberable? %>
+                      <%= f.label :remember_me do %>
+                        <%= f.check_box :remember_me %>
+                        <%= t('.remember_me', default: 'Garder ma session ouverte') %>
+                      <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            <div class="form-group text-right">
+                <div class="col-xs-12">
+                    <!-- <button class="btn btn-purple w-md" type="submit">Log In</button> -->
+                    <%= f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-purple w-md' %>
+                </div>
+            </div>
+
+            <div class="form-group m-t-30">
+                <div class="col-sm-7">
+                    <i class="fa fa-lock m-r-5"></i>
+                    <% if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                      <%= link_to t('.forgot_your_password', default: 'Mot de passe oublié?'), new_password_path(resource_name) %><br />
+                    <% end %>
+                </div>
+
+                <div class="col-sm-5 text-right">
+                    <!-- <a href="register.html">Create an account</a> -->
+                    <% if devise_mapping.registerable? && controller_name != 'registrations' %>
+                      <%= link_to t('.sign_up', default: 'Créer un compte'), new_registration_path(resource_name) %><br />
+                    <% end %>
+                </div>
+            </div>
+
+          <% end %>
+        </div>
   </div>
 </div>
