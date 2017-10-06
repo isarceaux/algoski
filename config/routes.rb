@@ -10,18 +10,19 @@ Rails.application.routes.draw do
 
   get 'dashboards', to: 'dashboards#profile'
 
-  get 'subscriptions/destroy'
+  # get 'subscriptions/destroy'
 
-  get 'customers/show'
+  # get 'customers/show'
 
   get 'pages/home'
-
+  root 'pages#home'
+  
   devise_for :users
   # resources :classifieds
   # get '/search', to: 'classifieds#search'
   
   # root 'classifieds#search'
-  root 'pages#home'
+
 
   # get 'stations/show'
 

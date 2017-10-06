@@ -2167,3 +2167,8 @@ aside.left-panel.collapsed span.nav-label {
   height: 240px;
   margin-bottom: 0;
 }
+
+.alert
+{
+  margin-bottom: 0;
+}
