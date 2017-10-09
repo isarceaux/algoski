@@ -15,22 +15,22 @@
     <!-- Navbar Start -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li class="active">
+            <li class=<%= cp(dashboards_analysis_path) %> >
             <%= link_to dashboards_analysis_path do %>
                 <i class="ion-stats-bars"></i> 
                 <span class="nav-label">Analyses</span>
             <% end %>
             </li>
 
-            <li>
+            <li >
             <%= link_to '#' do %>
                 <i class="ion-location"></i> 
                 <span class="nav-label">Carte</span>
             <% end %>
             </li>
 
-            <li>
-            <%= link_to '#' do %>
+            <li class=<%= cp(dashboards_data_table_path) %>>
+            <%= link_to dashboards_data_table_path do %>
                 <i class="ion-grid"></i> 
                 <span class="nav-label">Tableau</span>
             <% end %>

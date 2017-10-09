@@ -20,5 +20,9 @@ module DashboardsHelper
 
     return new_title
   end
+
+  def cp(path)
+    'active' if current_page?(path)
+  end
   
 end

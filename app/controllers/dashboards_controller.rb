@@ -23,6 +23,22 @@ class DashboardsController < ApplicationController
   end
 
   def data_table
+
+    # Initialization
+    classifieds_hash = {}
+
+    #Demo
+    demo_resort = Resort.find_by(ville:'tignes')
+    
+    #Choosing current resort (can use params)
+    current_resort = demo_resort
+
+    @station_name = current_resort.ville
+
+    #Determining the classifieds to be displayed
+    classifieds_hash[current_resort.ville] = Classified. where(resort_id:current_resort.id)
+    @selected_classifieds = classifieds_hash[current_resort.ville]
+
   end
 
   def profile

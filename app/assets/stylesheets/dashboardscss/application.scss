@@ -1,0 +1,20 @@
+/*
+ *= require_self
+ 
+ *= require dashboardscss/bootstrap-reset
+ *= require dashboardscss/animate
+ *= require dashboardscss/morris
+ *= require dashboardscss/sweet-alert.min
+ *= require dashboardscss/c3
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require dashboardscss/style
+ *= require dashboardscss/helper
+*/
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'ionicons';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+

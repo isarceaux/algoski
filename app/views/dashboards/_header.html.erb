@@ -10,7 +10,9 @@
     <div class="custom-mid-header col-md-8">
         <% if @station_name %>
             <h3><%= titleize(@station_name) %></h3>
-            <h4>capacité d'accueil <%= @number_of_guests %> personnes</h4>
+            <% if @number_of_guests %>
+                <h4>capacité d'accueil <%= @number_of_guests %> personnes</h4>
+            <% end %>
         <% end %>
     </div>
     

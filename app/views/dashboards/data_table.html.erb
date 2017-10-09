@@ -3,11 +3,65 @@
 <!--Main Content Start -->
 <section class="content">
     
-   <%= render 'header' %>
+ <%= render 'header' %>
 
-    <h1>Dashboards#data-table</h1>
-    <p>Find me in app/views/dashboards/data-table.html.erb</p>
+  <div class="wraper container-fluid">
+    <div class="page-title"> 
+        <h3 class="title">Liste des annonces</h3> 
+    </div>
 
-    <%= render 'footer' %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Annonces pour la saison 2017-2018</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <table id="datatable" class="classifieds-table table table-striped table-bordered" cellspacing="0" width="100%">
+                <tfoot>
+                  <tr>
+                    <th>Semaine</th>
+                    <th><i class="fa fa-user" aria-hidden="true"></i></th>
+                    <!-- <th>Prix</th>
+                    <th>Nom de l'annonce</th> -->
+                    <!-- <th>Code annonce</th> -->
+                  </tr>
+                </tfoot>  
+                <thead>
+                  <tr>
+                    <th>Semaine</th>
+                    <th><i class="fa fa-user" aria-hidden="true"></i></th>
+                    <th>Prix</th>
+                    <th>Nom de l'annonce</th>
+                    <!-- <th>Code annonce</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                <% @selected_classifieds.each do |sc| %>
+                  <tr>
+                    <td><%= sc.start_date.mday%>/<%= sc.start_date.mon%>/<%=sc.start_date.year %></td>
+                    <td><%= sc.number_of_guests %></td>
+                    <td><%= (sc.price*7).round %>€</td>
+                    <td><a target="_blank" href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
+                    <!-- <td><%= sc.abritel_classified_id%></td> -->
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End Row -->
+</div>
+
+  <%= render 'footer' %>
 
 </section>
+
+<%= javascript_include_tag 'dashboarddatatablejs/application.js', 'data-turbolinks-track': 'reload'%>
