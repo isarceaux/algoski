@@ -35,9 +35,9 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:destroy]
 
-  # authenticate :user, lambda { |bu| bu.super_admin? } do
+  authenticate :user, lambda { |bu| bu.admin? } do
      mount Sidekiq::Web => '/sidekiq'
-  # end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
