@@ -32,5 +32,15 @@ class UsersController < ApplicationController
     @averages = Average.all
     @number_of_guests = params[:number_of_guests]
   end
+
+  # def edit
+  #   @user = current_user
+  # end
+
+  # private
+
+  #   def user_params
+  #     params.require(:user).permit(:civility, :first_name, :last_name, :email, :password)
+  #   end
   
 end
