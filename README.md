@@ -6,8 +6,6 @@ Le back partira de ce qui a déjà été fait auparavant sur le projet Tignes-Sc
 
 --- 
 Voici les premières to-dos :
-- déployer le nouveau projet sur l'ancien heroku
-- mettre en place le nouveau template
 - évolutions du back
   - rajouter des entrées supplémentaires pour le scrapping (afin d'avoir un dashboard plus intéressant)
   - mettre en place la mise à jour d'une entrée dans le scrapping (pour pouvoir quand même utiliser la base existante)
