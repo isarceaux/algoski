@@ -37,8 +37,8 @@
             </li>
 
             <% if user_signed_in? %>
-                <li>
-                <%= link_to edit_user_registration_path do %>
+                <li class=<%= cp(dashboards_profile_path) %>>
+                <%= link_to dashboards_profile_path do %>
                     <i class="ion-person"></i> 
                     <span class="nav-label">Mon compte</span>
                 <% end %>

@@ -67,10 +67,11 @@ ActiveRecord::Schema.define(version: 20171009100536) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "pro_account"
     t.string "last_name"
     t.string "first_name"
     t.string "civility"
-    t.boolean "pro_account", default: false
+    t.string "account"
     t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

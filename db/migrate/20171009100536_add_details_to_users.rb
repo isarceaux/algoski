@@ -5,7 +5,7 @@ class AddDetailsToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :first_name, :string
     add_index :users, :first_name
     add_column :users, :civility, :string
-    add_column :users, :pro_account, :boolean, default: false
+    add_column :users, :account, :string
     add_column :users, :admin, :boolean, default: false
   end
 end

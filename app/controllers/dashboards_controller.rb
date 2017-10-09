@@ -42,5 +42,27 @@ class DashboardsController < ApplicationController
   end
 
   def profile
+    @user = current_user
+
+    #Inscription
+    s = Subscription.new
+    s.user = current_user
+    if params["ville"]
+      s.resort = Resort.find_by_ville(params["ville"].downcase)
+    end
+
+    if s.resort
+      @current_ville_id = s.resort.id
+    end
+
+    if Subscription.where(user_id:current_user.id).where(resort_id:@current_ville_id) == []
+      s.save
+    else
+      flash.now[:alert] = "Vous êtes déjà abonné(e) à cette station!"  
+    end
+
+    @subscriptions = Subscription.where(user_id:current_user.id)
+
   end
+
 end

@@ -19,8 +19,7 @@
                           <div class="box-layout meta bottom">
                             <div class="col-sm-6 clearfix">
                               <div class="media-body">
-                                <h3 class="text-white mb-2 m-t-10 ellipsis">Jonathan Deo</h3>
-                                <h5 class="text-white"> Mycityname</h5>
+                                <h3 class="text-white mb-2 m-t-10 ellipsis"><%= titleize(@user.first_name) %> <%= @user.last_name %></h3>
                               </div>
                             </div>
                           </div>
@@ -34,54 +33,58 @@
                         <div class="panel panel-default p-0">
                             <div class="panel-body p-0"> 
                                 <ul class="nav nav-tabs profile-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#aboutme">About Me</a></li>
-                                    <li class=""><a data-toggle="tab" href="#user-activities">Activities</a></li>
-                                    <li class=""><a data-toggle="tab" href="#edit-profile">Settings</a></li>
-                                    <li class=""><a data-toggle="tab" href="#projects">Projects</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#aboutme">Informations personnelles</a></li>
+                                    <li class=""><a data-toggle="tab" href="#myresorts">Mes stations de skis</a></li>
+                                    <li class=""><a data-toggle="tab" href="#editmyinfo">Editer mes informations</a></li>
                                 </ul>
 
                                 <div class="tab-content m-0"> 
 
                                     <div id="aboutme" class="tab-pane active">
                                     <div class="profile-desk">
-                                        <h1>Johnathan Deo</h1>
-                                        <span class="designation">PRODUCT DESIGNER (UX / UI / Visual Interaction)</span>
-                                        <p>
-                                            I have 10 years of experience designing for the web, and specialize in the areas of user interface design, interaction design, visual design and prototyping. I’ve worked with notable startups including Pearl Street Software.
-                                        </p>
-                                        <a class="btn btn-primary m-t-20" href="#"> <i class="fa fa-check"></i> Following</a>
+                                        <h1><%= titleize(@user.first_name) %> <%= @user.last_name %></h1>
+                                        
+                                        <% if @user.pro_account %>
+                                            <div class="custom-btn bg-purple " href="#"> Professionnel</div>
+                                        <% else %>
+                                            <div class="flex-row">
+                                            <a class="btn custom-btn bg-pink" href="#"> Particulier</a>
+                                            <span class='pop-up-right'>Passer en pro</span>
+                                            </div>
+                                        <% end %>
+
 
                                         <table class="table table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3"><h3>Contact Information</h3></th>
+                                                    <th colspan="3"><h3>Informations personelles</h3></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td><b>Url</b></td>
-                                                    <td>
-                                                    <a href="#" class="ng-binding">
-                                                        www.example.com
-                                                    </a></td>
+                                                    <td><b>Nom</b></td>
+                                                    <td class="ng-binding">
+                                                        <%= titleize(@user.last_name) %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><b>Prénom</b></td>
+                                                    <td class="ng-binding">
+                                                        <%= titleize(@user.first_name) %>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td><b>Email</b></td>
-                                                    <td>
-                                                    <a href="" class="ng-binding">
-                                                        jonathandeo@example.com
-                                                    </a></td>
+                                                    <td class="ng-binding">
+                                                        <%= @user.email.downcase %>
+                                                    </td>
                                                 </tr>
                                                 <tr>
-                                                    <td><b>Phone</b></td>
-                                                    <td class="ng-binding">(123)-456-7890</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Skype</b></td>
-                                                    <td>
-                                                    <a href="" class="ng-binding">
-                                                        jonathandeo123
-                                                    </a></td>
+                                                    <td><b>Stations de ski</b></td>
+                                                    <!-- Modifier cette partie pour prendre en compte le fait d'avoir une ou plusieurs stations en fonction du type de compte -->
+                                                    <td class="ng-binding">
+                                                        Tignes, Val d'Isère 
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -89,59 +92,57 @@
                                 </div> <!-- about-me -->
 
 
-                                <!-- Activities -->
-                                <div id="user-activities" class="tab-pane">
-                                    <div class="timeline-2">
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">5 minutes ago</div>
-                                                <p><strong><a href="#" class="text-info">John Doe</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
-                                            </div>
-                                        </div>
+                            <!-- Resorts list and subscriptions -->
+                                <div id="myresorts" class="tab-pane">
+                                <div class="profile-desk">
+                                    <% if @subscriptions == nil || @subscriptions.count == 0 %>
+                                      <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
+                                    <% end %>
 
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">30 minutes ago</div>
-                                                <p><a href="" class="text-info">Lorem</a> commented your post.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
+                                    <div class="row">
+                                      <div class="col-md-offset-1 col-md-10">
+                                        <% @subscriptions.each do |s| %>
+                                          <div class="col-md-3">        
+                                              <div class="station-bloc">
+                                                <div class='col-md-offset-10'>
+                                                  <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                                                    <i class='fa fa-times'></i>
+                                                  <% end %>
+                                                </div>
+                                                  <%= link_to dashboards_analysis_path do %>
+                                                    <h2> <%= titleize(s.resort.ville)%> </h2>
+                                                  <% end %>
+                                              </div>
+                                          </div>
+                                        <% end %>
+                                      </div>
+                                    </div>
 
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">59 minutes ago</div>
-                                                <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
+                                    <div class="row">
+                                      <div class="col-md-offset-1 col-md-10">
+                                        <hr>
+                                      </div>
+                                    </div> 
 
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">5 minutes ago</div>
-                                                <p><strong><a href="#" class="text-info">John Doe</a></strong>Uploaded 2 new photos</p>
-                                            </div>
+                                    <div class="row centered">
+                                      <h3>Ajouter une nouvelle station :</h3>
+                                      
+                                        <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
+                                          <div class="input-group">
+                                          <%= select_tag(:ville, options_for_select(list_station), class:'form-control', multiple: false) %>
+                                              <span class="input-group-btn">
+                                                <%= submit_tag "OK", class: "btn btn-primary" %>
+                                              </span>
                                         </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">30 minutes ago</div>
-                                                <p><a href="" class="text-info">Lorem</a> commented your post.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="time-item">
-                                            <div class="item-info">
-                                                <div class="text-muted">59 minutes ago</div>
-                                                <p><a href="" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-                                                <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-                                            </div>
-                                        </div>
+                                        <% end %>
+                                        
                                     </div>
                                 </div>
+                                </div> <!-- End of resorts list and subscriptions -->
+
 
                                 <!-- settings -->
-                                <div id="edit-profile" class="tab-pane">
+                                <div id="editmyinfo" class="tab-pane">
                                     <div class="user-profile-content">
                                         <form role="form">
                                             <div class="form-group">
@@ -173,88 +174,12 @@
                                     </div>
                                 </div>
 
-
-                                <!-- profile -->
-                                <div id="projects" class="tab-pane">
-                                    <div class="row m-t-10">
-                                        <div class="col-md-12">
-                                            <div class="portlet"><!-- /primary heading -->
-                                                <div id="portlet2" class="panel-collapse collapse in">
-                                                    <div class="portlet-body">
-                                                        <div class="table-responsive">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Project Name</th>
-                                                                        <th>Start Date</th>
-                                                                        <th>Due Date</th>
-                                                                        <th>Status</th>
-                                                                        <th>Assign</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-info">Work in Progress</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>2</td>
-                                                                        <td>Velonic Frontend</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-success">Pending</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>3</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-pink">Done</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>4</td>
-                                                                        <td>Velonic Frontend</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-purple">Work in Progress</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>5</td>
-                                                                        <td>Velonic Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-warning">Coming soon</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> <!-- /Portlet -->
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
              
                         </div> 
                     </div>
                 </div>
             </div>
-
-            
-
-            
-
 
         </div>
 
@@ -268,4 +193,4 @@
 </section>
 <!-- Main Content Ends -->
 
-<%= javascript_include_tag 'application_dashboard.js', 'data-turbolinks-track': 'reload'%>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>

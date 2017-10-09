@@ -1629,6 +1629,51 @@ ul.social-icons li a i {
   -o-transition: all 0.17s ease-in-out;
 }
 
+.custom-btn
+{
+  height: 40px;
+  width: 130px;
+  border-radius: 5px 5px 5px;
+  
+  display: flex;
+  flex-direction: columns;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+
+}
+
+.custom-btn:hover
+{
+  color:white;
+}
+
+.flex-row
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.pop-up-right
+{
+  margin-left: 10px;
+}
+
+.flex-row .pop-up-right
+{
+  display: none;
+}
+
+.flex-row:hover .pop-up-right
+{
+  display: block;
+}
+
 
 /************* 17.Timeline **********/
 /* Timeline */

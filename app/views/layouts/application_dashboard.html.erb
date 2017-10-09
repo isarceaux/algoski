@@ -21,15 +21,13 @@
 
 		
 			<% if notice %>
-			<p class="alert alert-success"><%= notice %></p>
+			<p class="alert alert-success" style="text-align: right;"><%= notice %></p>
 			<% end %>
 			<% if alert %>
-			<p class="alert alert-danger"><%= alert %></p>
+			<p class="alert alert-danger" style="text-align: right;"><%= alert %></p>
 			<% end %>
 
 			<%= yield %>
-		
-		<%= render 'cookies_eu/consent_banner' %>
   	
   	
 	</body>
