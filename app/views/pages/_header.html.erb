@@ -27,7 +27,7 @@
                     
                     <% if user_signed_in? %>
                       <li><%= link_to "Mon tableau de bord", dashboards_analysis_path, class:"dropdown-toggle" %></li>
-                      <li><%= link_to "#{current_user.email}", edit_user_registration_path %></li>
+                      <li><%= link_to "#{current_user.email}", dashboards_profile_path %></li>
                       <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
                   <% else %>
                       <li><a href="#how">Comment ça marche ?</a></li>

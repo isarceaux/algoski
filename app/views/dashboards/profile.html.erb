@@ -57,7 +57,7 @@
                                         <table class="table table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3"><h3>Informations personelles</h3></th>
+                                                    <th colspan="3"><h3>Informations personnelles</h3></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -144,30 +144,35 @@
                     <!-- Edit personnal info -->
                                 <div id="editmyinfo" class="tab-pane">
                                     <div class="user-profile-content">
+
+                                    <h3>Edition d'informations personnelles</h3>
+                                    
+                                    <% @user.civility == 'Mme' ? true : false %>
                                         
                                         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
                                             <div class="form-group col-md-12">
-                                                <%= radio_button_tag(:civility, "Civilité") %>
-                                                <%= label_tag(:woman, "Mme") %>
-                                                <%= radio_button_tag(:civility, "Civilité") %>
-                                                <%= label_tag(:man, "M.") %>
+                                                <%= f.radio_button(:civility, 'Mme', checked:( @user.civility == 'Mme' ) ) %>
+                                                <%= f.label :civility, 'Mme'%>
+                                                <%= f.radio_button(:civility, 'M.', checked:( @user.civility == 'M.' )) %>
+                                                <%= f.label :civility, 'M.'%>
+                                                
                                             </div>
 
                                             
                                             <div class="form-group col-md-6">
                                                 <%= f.label :first_name, 'Prénom' %>
-                                                <%= f.text_field :first_name, class: 'form-control', placeholder: @user.first_name %>
+                                                <%= f.text_field :first_name, class: 'form-control', value: @user.first_name %>
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <%= f.label :last_name, 'Nom'%>
-                                                <%= f.text_field :last_name, class: 'form-control', placeholder: @user.last_name %>
+                                                <%= f.text_field :last_name, class: 'form-control', value: @user.last_name %>
                                             </div>
 
                                             <div class="form-group col-md-12">
                                                 <%= f.label :password, 'Nouveau mot de passe' %>
-                                                <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+                                                <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder:"Laissez vide pour garder l'actuel" %>
                                             </div>
 
                                             <div class="form-group col-md-12">
@@ -175,19 +180,18 @@
                                                 <%= f.password_field :password_confirmation, class: 'form-control'  %>
                                             </div>
                                         
-                                        <hr>
                                         
-                                        <div class="col-md-12" style="text-align:center;">Par sécurité nous vous demandons de rappeler les informations suivantes :</div>
+                                        <div class="col-md-12" style="text-align:center;border-top:1px solid lightgrey;padding-top: 10px;">Par sécurité nous vous demandons de rappeler les informations suivantes :</div>
                                         
 
                                             <div class="form-group col-md-12">
                                                 <%= f.label :email, 'Email' %>
-                                                <%= f.email_field :email, autofocus: true, class: 'form-control', value: @user.email %>
+                                                <%= f.email_field :email, autofocus: true, class: 'form-control', value: @user.email, required: true %>
                                             </div>
 
                                             <div class="form-group col-md-12">
-                                                <%= f.label :current_password, 'Mot de passe actuel' %> <i>'veuillez remplir ce champs pour pouvoir éditer vos informations')</i>
-                                                <%= f.password_field :current_password, class: 'form-control' %>
+                                                <%= f.label :current_password, 'Mot de passe actuel' %>
+                                                <%= f.password_field :current_password, class: 'form-control', required: true %>
                                             </div>
                                             
                                             <div class="form-group text-right">

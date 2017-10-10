@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def super_admin?
-    email == "example@example.com"
-  end
+  # def super_admin?
+  #   email == "isabellecorp@gmail.com"
+  # end
 end

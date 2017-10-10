@@ -10,28 +10,20 @@ Rails.application.routes.draw do
 
   get 'dashboards', to: 'dashboards#analysis'
 
-  # get 'subscriptions/destroy'
-
-  # get 'customers/show'
-
   get 'pages/home'
   root 'pages#home'
   
   devise_for :users
-  # resources :classifieds
-  # get '/search', to: 'classifieds#search'
-  
-  # root 'classifieds#search'
 
-
-  # get 'stations/show'
+  # To have a redirection do dashboards profile view :
+  as :user do
+    get 'users', :to => 'dashboards#profile', :as => :user_root 
+  end
 
   get '/contact', to: 'pages#contact'
   get '/legal', to: 'pages#legal'
 
-  # get '/dashboard', to:'users#dashboard'
-
-  get '/users', to: 'pages#home'
+  # get '/users', to: 'pages#home'
 
   resources :subscriptions, only: [:destroy]
 
