@@ -44,13 +44,15 @@
                                     <div class="profile-desk">
                                         <h1><%= titleize(@user.first_name) %> <%= @user.last_name %></h1>
                                         
-                                        <% if @user.pro_account %>
+                                        <% if @user.account == 'professional' %>
                                             <div class="custom-btn bg-purple " href="#"> Professionnel</div>
-                                        <% else %>
+                                        <% elsif @user.account == 'individual' %>
                                             <div class="flex-row">
                                             <a class="btn custom-btn bg-pink" href="#"> Particulier</a>
                                             <span class='pop-up-right'>Passer en pro</span>
                                             </div>
+                                        <% else %>
+                                            <a href="">S'abonner pour accéder au contenu</a>
                                         <% end %>
 
 
@@ -83,7 +85,16 @@
                                                     <td><b>Stations de ski</b></td>
                                                     <!-- Modifier cette partie pour prendre en compte le fait d'avoir une ou plusieurs stations en fonction du type de compte -->
                                                     <td class="ng-binding">
-                                                        Tignes, Val d'Isère 
+                                                        <% if @user.subscriptions.count == 1 %>
+                                                            <%= titleize( @user.subscriptions[0].resort.ville ) %>
+                                                        <% elsif @user.subscriptions.count > 1 %>
+                                                            <%= titleize( @user.subscriptions[0].resort.ville ) %>
+                                                            <% @user.subscriptions[1..-1].each do |s| %>
+                                                                , <%= titleize( s.resort.ville ) %>
+                                                            <% end %>
+                                                        <% else %>
+                                                            <em>Vous n'êtes abonné(e) à aucune station</em>
+                                                        <% end %>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -128,12 +139,12 @@
                                       <h3>Ajouter une nouvelle station :</h3>
                                       
                                         <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
-                                          <div class="input-group">
-                                          <%= select_tag(:ville, options_for_select(list_station), class:'form-control', multiple: false) %>
-                                              <span class="input-group-btn">
-                                                <%= submit_tag "OK", class: "btn btn-primary" %>
+                                            <div class="input-group">
+                                                <%= select_tag(:ville, options_for_select(list_station), class:'form-control', multiple: false) %>
+                                                <span class="input-group-btn">
+                                                    <%= submit_tag "OK", class: "btn btn-primary" %>
                                               </span>
-                                        </div>
+                                            </div>
                                         <% end %>
                                         
                                     </div>

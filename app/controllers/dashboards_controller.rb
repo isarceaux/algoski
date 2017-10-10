@@ -7,18 +7,20 @@ class DashboardsController < ApplicationController
     gon.lowerprice = 50
     
     current_resort = Resort.find_by(ville:'tignes')
-    current_number_of_guests = 4
+    @number_of_guests = 4
     # To be changed with params and current_user data
+    if params[:number_of_guests]
+      @number_of_guests = params[:number_of_guests]
+    end 
     
     @station_name = current_resort.ville
-    @number_of_guests = current_number_of_guests
 
     @classifieds_count_local = Classified.where(resort:current_resort).count
     @classifieds_count_global = Classified.all.count
     @housings_count_local = Classified.where(resort:current_resort).group('link').pluck('link').count
     @housings_count_global = Classified.group('link').pluck('link').count 
     
-    gon.averages = Average.where(resort:current_resort).where(number_of_guests:current_number_of_guests)
+    gon.averages = Average.where(resort:current_resort).where(number_of_guests:@number_of_guests)
 
   end
 
