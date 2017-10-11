@@ -29,6 +29,7 @@ gem 'font-awesome-sass'
 gem 'ionicons-rails'
 gem 'figaro'
 gem 'gon'
+gem 'stripe'
 
 
 group :development, :test do
