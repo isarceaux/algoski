@@ -28,10 +28,10 @@ class CalculatingWorker
             average_entry = Average.new
           end 
 
-          average_entry.start_date = date
-          average_entry.average_value = classifieds.average('price')
-          average_entry.average_count = classifieds.count
-          average_entry.resort = r
+          average_entry.start_date       = date
+          average_entry.average_value    = classifieds.where(number_of_guests:ng).average('price')
+          average_entry.average_count    = classifieds.count
+          average_entry.resort           = r
           average_entry.number_of_guests = ng
           average_entry.save
 
