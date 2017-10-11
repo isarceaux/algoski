@@ -47,10 +47,12 @@
                                         <% if @user.account == 'professional' %>
                                             <div class="custom-btn bg-purple " href="#"> Professionnel</div>
                                         <% elsif @user.account == 'individual' %>
-                                            <div class="flex-row">
-                                            <a class="btn custom-btn bg-pink" href="#"> Particulier</a>
-                                            <span class='pop-up-right'>Passer en pro</span>
-                                            </div>
+                                            <%= link_to new_charge_path do %>
+                                                <div class="flex-row">
+                                                    <span class="btn custom-btn bg-pink"> Particulier</span>
+                                                    <span class='pop-up-right'>Passer en pro</span>
+                                                </div>
+                                            <% end %>    
                                         <% else %>
                                             <%= link_to "S'abonner pour accéder au contenu",new_charge_path %>
                                             <!-- <a href="">S'abonner pour accéder au contenu</a> -->

@@ -4,8 +4,21 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Amount in cents
-  @amount = 500
+  
+  account_type = params[:account_type]
+  
+  if account_type == 'professional'
+    @amount = 24900 # Amount in cents
+
+  elsif account_type == 'individual'
+    @amount = 4900 # Amount in cents
+  
+  elsif account_type == 'professional-upgrade'
+    @amount = 20000
+    account_type = 'professional'
+  else
+    redirect_to new_charge_path
+  end
 
   customer = Stripe::Customer.create(
     :email => params[:stripeEmail],
@@ -18,6 +31,11 @@ class ChargesController < ApplicationController
     :description => 'Rails Stripe customer',
     :currency    => 'eur'
   )
+  if charge
+    current_user.account = 'professional'
+    current_user.account = account_type
+    current_user.save
+  end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
