@@ -459,3 +459,14 @@ ul.social-icons li a i {
   margin-bottom: 0;
 }
 
+.padding-top-reduced
+{
+  padding-top: 20px;
+}
+
+.stripe-button-el span
+{
+  background-image: none;
+  background-color: pink;
+}
+

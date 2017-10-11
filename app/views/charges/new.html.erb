@@ -1,18 +1,74 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
-  </article>
+<section class="section padding-top-reduced" id="pricing">
+    <div class="container">
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
-<% end %>
+      <div class="row text-center">
+      <div class="col-sm-12">
+        <h2 class="title">Nos offres</h2>
+        <p class="slogan">Déjouez la concurrence et optimisez vos locations : louez plus, louez mieux.</p>
+      </div>
+      </div>
+      <div class="row text-center">
+      <div class="col-sm-offset-1 col-sm-10">
+        <p> Ils comprennent un accès illimité à la plateforme Algoski. Deux forfaits s'offrent à vous. Le premier donne accès aux données d'une seule station, utile si vous êtes un particulier propriétaire dans une seule station. Le second s'adresse plutôt aux professionnels de l'immobilier, ou aux particuliers multi-propriétaires qui souhaiteraient évaluer la concurrence sur plusieurs stations. Dans tous les cas vous aurez accès à la même profondeur d'analyse et au tableau détaillé des annonces de vos concurrents, soit sur une station soit sur toutes les stations de notre base.</p>
+      </div>
+      </div>
+
+    <!-- end row -->
+
+        <div class="row pt80">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row pricing-container">
+
+                  <div class="col-sm-4">
+                    <div class="price_card text-center">
+                    <%= form_tag charges_path do %>
+                      <div class="header bg-pink">
+                        <span class="name">PARTICULIER</span>
+                        <span class="price">49€</span>
+                      </div>
+                      <ul class="price-features">
+                        <li>Saison 2017-2018</li>
+                        <li>Tous appartements et chalets</li>
+                        <li><span style="font-weight: bold">1 station de ski</span>, au choix parmis nos <%= @resort_count %> stations</li>
+                      </ul>
+                      <script src="https://checkout.stripe.com/checkout.js" 
+                        class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="Formule particulier"
+                        data-amount="4900"
+                        data-locale="auto"
+                        data-currency="eur"></script>
+                    <% end %>
+                    </div>
+                    <span class="tip">* Plus répandue chez les particuliers propriétaires</span>
+                  </div> <!-- end col -->
+
+                  <div class="col-sm-4">
+                    <div class="price_card text-center">
+                    <%= form_tag charges_path do %>
+                      <div class="header bg-purple">
+                        <span class="name">PROFESSIONNEL</span>
+                        <span class="price">249€</span>
+                      </div>
+                      <ul class="price-features">
+                        <li>Saison 2017-2018</li>
+                        <li>Tous appartements et chalets</li>
+                        <li style="font-weight: bold">Toutes les stations de ski de notre base : <%= @resort_count %> stations</li>
+                      </ul>
+                      <script src="https://checkout.stripe.com/checkout.js" 
+                        class="stripe-button"
+                        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                        data-description="Formule particulier"
+                        data-amount="4900"
+                        data-locale="auto"
+                        data-currency="eur"></script>
+                    <% end %>
+                    </div> <!-- end Pricing_card -->
+                  </div> <!-- end col -->
+                </div> <!-- end row -->
+            </div> <!-- end Col-10 -->
+        </div> <!-- end row -->
+    </div> <!-- end Container -->
+</section>
+
+<%= render 'pages/footer' %>

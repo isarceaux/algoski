@@ -20,3 +20,5 @@ Rails.application.config.assets.precompile += %w( dashboardanalysiscss/applicati
 Rails.application.config.assets.precompile += %w( application_dashboard.js )
 
 Rails.application.config.assets.precompile += %w( dashboardanalysisjs/application.js )
+
+Rails.application.config.assets.precompile += %w( stripe-custom.js )
