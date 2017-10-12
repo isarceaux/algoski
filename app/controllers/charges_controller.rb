@@ -32,8 +32,12 @@ class ChargesController < ApplicationController
     :currency    => 'eur'
   )
   if charge
-    current_user.account = 'professional'
     current_user.account = account_type
+   
+    current_user.subscriptions.each do |s|
+      s.destroy
+    end
+
     current_user.save
   end
 
