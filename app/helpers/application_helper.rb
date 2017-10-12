@@ -16,7 +16,7 @@ module ApplicationHelper
     #   end
     # end
     list_of_station = []
-    Resort.group('ville').pluck('ville').each do |r|
+    Resort.where(ski_resort:true).group('ville').pluck('ville').each do |r|
       list_of_station << titleize(r)
     end
     return(list_of_station)
