@@ -7,11 +7,8 @@ class DashboardsController < ApplicationController
     @demo = true
     
     if user_signed_in?
-      if current_user.account == 'individual' && current_user.subscriptions.count != 0
+      if current_user.subscriptions[0] != nil
         current_resort = current_user.subscriptions.first.resort
-        @demo = false
-      elsif current_user.account == 'professional' && current_user.subscriptions.count != 0
-        current_resort = current_user.subscriptions.first.resort # To be modified to use a form and params
         @demo = false
       else
         current_resort = Resort.find_by(ville:'tignes')
@@ -20,10 +17,27 @@ class DashboardsController < ApplicationController
       current_resort = Resort.find_by(ville:'tignes')
     end
 
+    #   if current_user.account == 'individual' && current_user.subscriptions[0] != nil
+    #     current_resort = current_user.subscriptions.first.resort
+    #     @demo = false
+    #   elsif current_user.account == 'professional' && current_user.subscriptions[0] != nil
+    #     current_resort = current_user.subscriptions.first.resort
+    #     @demo = false
+    #   else
+    #     current_resort = Resort.find_by(ville:'tignes')
+    #   end
+    # else
+    #   current_resort = Resort.find_by(ville:'tignes')
+    # end
+
     @number_of_guests = 4 # To be changed with params and current_user data
     
     if params[:number_of_guests]
       @number_of_guests = params[:number_of_guests]
+    end 
+
+    if params[:current_resort] != "" && params[:current_resort]
+      current_resort = Resort.find_by( ville:params[:current_resort] )
     end 
     
     @station_name = current_resort.ville
