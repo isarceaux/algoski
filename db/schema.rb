@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20171012140532) do
     t.string "region_number"
     t.string "ville"
     t.string "ville_url"
-    t.boolean "ski_resort"
+    t.boolean "ski_resort", default: false
     t.index ["region_number"], name: "index_resorts_on_region_number"
     t.index ["ski_resort"], name: "index_resorts_on_ski_resort"
     t.index ["ville"], name: "index_resorts_on_ville"
