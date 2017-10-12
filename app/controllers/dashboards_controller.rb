@@ -1,34 +1,17 @@
 class DashboardsController < ApplicationController
 
   layout 'application_dashboard'
+  include DashboardsHelper
   
   def analysis
-    # @averageprice = 100
-    @demo = true
+    @action_tag = 'analysis'
     
-    if user_signed_in?
-      if current_user.subscriptions[0] != nil
-        current_resort = current_user.subscriptions.first.resort
-        @demo = false
-      else
-        current_resort = Resort.find_by(ville:'tignes')
-      end
-    else
-      current_resort = Resort.find_by(ville:'tignes')
+    @demo = true 
+    if user_signed_in? && current_user.subscriptions[0] != nil
+      @demo = false
     end
 
-    #   if current_user.account == 'individual' && current_user.subscriptions[0] != nil
-    #     current_resort = current_user.subscriptions.first.resort
-    #     @demo = false
-    #   elsif current_user.account == 'professional' && current_user.subscriptions[0] != nil
-    #     current_resort = current_user.subscriptions.first.resort
-    #     @demo = false
-    #   else
-    #     current_resort = Resort.find_by(ville:'tignes')
-    #   end
-    # else
-    #   current_resort = Resort.find_by(ville:'tignes')
-    # end
+    current_resort = current_resort_calculation
 
     @number_of_guests = 4 # To be changed with params and current_user data
     
@@ -52,16 +35,17 @@ class DashboardsController < ApplicationController
   end
 
   def data_table
-
+    @action_tag = 'data_table'
+    
     # Initialization
     classifieds_hash = {}
 
-    #Demo
-    demo_resort = Resort.find_by(ville:'tignes')
-    
-    #Choosing current resort (can use params)
-    current_resort = demo_resort
+    current_resort = current_resort_calculation
 
+    if params[:current_resort] != "" && params[:current_resort]
+      current_resort = Resort.find_by( ville:params[:current_resort] )
+    end 
+    
     @station_name = current_resort.ville
 
     #Determining the classifieds to be displayed

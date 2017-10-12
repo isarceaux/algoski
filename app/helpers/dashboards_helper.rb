@@ -23,5 +23,19 @@ module DashboardsHelper
     end
     return list
   end
+
+  def current_resort_calculation
+    if user_signed_in?
+      if current_user.subscriptions[0] != nil
+        current_resort = current_user.subscriptions.first.resort
+      else
+        current_resort = Resort.find_by(ville:'tignes')
+      end
+    else
+      current_resort = Resort.find_by(ville:'tignes')
+    end
+
+    return current_resort
+  end
   
 end
