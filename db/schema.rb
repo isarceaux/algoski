@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009100536) do
+ActiveRecord::Schema.define(version: 20171012140532) do
 
   create_table "averages", force: :cascade do |t|
     t.date "start_date"
@@ -37,7 +37,9 @@ ActiveRecord::Schema.define(version: 20171009100536) do
     t.string "region_number"
     t.string "ville"
     t.string "ville_url"
+    t.boolean "ski_resort"
     t.index ["region_number"], name: "index_resorts_on_region_number"
+    t.index ["ski_resort"], name: "index_resorts_on_ski_resort"
     t.index ["ville"], name: "index_resorts_on_ville"
     t.index ["ville_url"], name: "index_resorts_on_ville_url"
   end

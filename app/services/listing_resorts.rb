@@ -42,9 +42,20 @@ class ListingResorts
         indice_url = link.split("_").length - 2
         current_resort.ville_url = link.split("_")[indice_url]
         current_resort.ville = URI.unescape(link.split("_")[indice_url])
+        current_resort.ski_resort = true
         current_resort.save
       elsif resp.split("\n").grep(/<link rel=\"next\"/)[0] != nil && Resort.find_by_region_number(resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1]) != nil
         puts "already in database"
+        current_resort = Resort.find_by_region_number(resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1])
+        current_resort.url = link
+        current_resort.region_number = resp.split("\n").grep(/<link rel=\"next\"/)[0].split("/")[4].split(":")[1]
+        #Adding city
+        indice_url = link.split("_").length - 2
+        current_resort.ville_url = link.split("_")[indice_url]
+        current_resort.ville = URI.unescape(link.split("_")[indice_url])
+        current_resort.ski_resort = true
+        current_resort.save
+        puts "updated resort"
       end
     else
       puts "not valid url"
