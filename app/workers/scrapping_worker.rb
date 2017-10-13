@@ -54,6 +54,8 @@ class ScrappingWorker
     search_results.each do |r|
       if r['averagePrice'] && r['headline'] && r['detailPageUrl']
         
+    #--------------  Classified creation --------------
+
         geography = r['regionPathHierarchy'].split(':')
 
         c = Classified.new(
@@ -72,61 +74,98 @@ class ScrappingWorker
             quartier:               geography[4]
         )
         
-        # Region number management : create a Resort if not yet in DB and we have r["geography"]["ids"][1]
-        current_resort = Resort.find_by_ville(c.ville) 
-        if current_resort
-          c.resort = current_resort
-          if Classified.find_by(link: r["detailPageUrl"], start_date: date)
-            @double += 1
-            Sidekiq.logger.info "------------------!!! Already in database - will be updated !!!------------------"
-            current_classified                        = Classified.find_by(link: r["detailPageUrl"], start_date: date)
-            current_classified.start_date             = c.start_date
-            current_classified.end_date               = c.end_date
-            current_classified.title                  = c.title
-            current_classified.price                  = c.price
-            current_classified.link                   = c.link
-            current_classified.number_of_guests       = c.number_of_guests
-            current_classified.abritel_id             = c.abritel_id
-            current_classified.abritel_classified_id  = c.abritel_classified_id
-            current_classified.country                = c.country
-            current_classified.region                 = c.region
-            current_classified.departement            = c.departement
-            current_classified.ville                  = c.ville
-            current_classified.quartier               = c.quartier
-            current_classified.save
-          else
-            c.save
-          end
-          Sidekiq.logger.info "-*-*-*-Resort could be found with ville-*-*-*-"
-        elsif r["geography"]["ids"][1]
-          Resort.create(region_number:r["geography"]["ids"][1]["value"],ville:c['ville'],ville_url:URI.escape(c['ville']))
-          Sidekiq.logger.info "-*-*-*-New Resort created-*-*-*-"
-          c.resort = Resort.last
-          if Classified.find_by(link: r["detailPageUrl"], start_date: date)
-            @double += 1
-            Sidekiq.logger.info "------------------!!! Already in database - will be updated !!!------------------"
-            Classified.find_by(link: r["detailPageUrl"], start_date: date)
-            current_classified                        = Classified.find_by(link: r["detailPageUrl"], start_date: date)
-            current_classified.start_date             = c.start_date
-            current_classified.end_date               = c.end_date
-            current_classified.title                  = c.title
-            current_classified.price                  = c.price
-            current_classified.link                   = c.link
-            current_classified.number_of_guests       = c.number_of_guests
-            current_classified.abritel_id             = c.abritel_id
-            current_classified.abritel_classified_id  = c.abritel_classified_id
-            current_classified.country                = c.country
-            current_classified.region                 = c.region
-            current_classified.departement            = c.departement
-            current_classified.ville                  = c.ville
-            current_classified.quartier               = c.quartier
-            current_classified.save
-          else
-            c.save
-          end
-        else
+      # Region number management : create a Resort if not yet in DB and we have r["geography"]["ids"][1]
+      # Then updates an existing resort or simply saves the new one
+
+        current_resort = Resort.find_by_ville(c.ville)
+        current_resort_found = true
+        
+        if current_resort == nil && ( r["geography"]["ids"][1] == nil )
           Sidekiq.logger.info "-*-*-*-Cannot record because can't link Classified with a Resort-*-*-*-"
+          current_resort_found = false
+        else
+          if current_resort
+            c.resort = current_resort
+          else
+            Resort.create(region_number:r["geography"]["ids"][1]["value"],ville:c['ville'],ville_url:URI.escape(c['ville']))
+            Sidekiq.logger.info "-*-*-*-New Resort created-*-*-*-"
+            c.resort = Resort.last
+          end
+
+          if Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            @double += 1
+            Sidekiq.logger.info "------------------!!! Already in database - will be updated !!!------------------"
+            current_classified                        = Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            current_classified.start_date             = c.start_date
+            current_classified.end_date               = c.end_date
+            current_classified.title                  = c.title
+            current_classified.price                  = c.price
+            current_classified.link                   = c.link
+            current_classified.number_of_guests       = c.number_of_guests
+            current_classified.abritel_id             = c.abritel_id
+            current_classified.abritel_classified_id  = c.abritel_classified_id
+            current_classified.country                = c.country
+            current_classified.region                 = c.region
+            current_classified.departement            = c.departement
+            current_classified.ville                  = c.ville
+            current_classified.quartier               = c.quartier
+            current_classified.save
+          else
+            c.save
+          end
+
         end
+
+    #--------------  End of classified creation --------------
+    if current_resort_found # We need a resort to record a housing
+
+      h = Housing.new(
+        # Same as in classifieds
+        title:                  r["headline"],
+        number_of_guests:       r["sleeps"].to_i,
+        link:                   r["detailPageUrl"],
+
+        # Additional data
+        accepts_home_away_payments:           r["acceptsHomeAwayPayments"],
+        accepts_offline_payments:             r["acceptsOfflinePayments"],
+        accepts_credit_cards:                 r["acceptsCreditCards"],
+        integrated_property_manager:          r["integratedPropertyManager"],
+        multi_unit_property:                  r["multiUnitProperty"],
+        online_bookable:                      r["onlineBookable"],
+        instant_bookable:                     r["instantBookable"],
+        number_of_bedrooms:                   r["bedrooms"].to_i,
+        number_of_bathrooms_full:             r["bathrooms"]["full"].to_i,
+        number_of_bathrooms_half:             r["bathrooms"]["half"].to_i,
+        number_of_bathrooms_toilet_only:      r["bathrooms"]["toiletOnly"].to_i,
+        number_of_bathrooms_full_and_half:    r["bathrooms"]["full"].to_i + r["bathrooms"]["half"].to_i,
+        image_count:                          r["imageCount"],
+        property_name:                        r["propertyName"],
+        property_type:                        r["propertyType"],
+        geocode_latitude:                     r["geoCode"]["latitude"].to_f,
+        geocode_longitude:                    r["geoCode"]["longitude"].to_f,
+        geocode_exact:                        r["geoCode"]["exact"],
+        average_rating:                       r["averageRating"].to_f,
+        scaled_average_rating:                r["scaledAverageRating"].to_f,
+        review_count:                         r["reviewCount"].to_i
+        )
+      if r["minStayRange"]
+        if r["minStayRange"]["minStayLow"]
+          h.min_stay_range_low  = r["minStayRange"]["minStayLow"].to_i
+        end
+        if r["minStayRange"]["minStayHigh"]
+          h.min_stay_range_high = r["minStayRange"]["minStayHigh"].to_i
+        end
+      end
+
+      h.resort = current_resort
+      
+      # Need to create relationship with classified
+      c.housing = h
+      c.save
+
+      h.save
+
+    end
 
     end
   end
