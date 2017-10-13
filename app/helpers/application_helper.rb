@@ -19,6 +19,7 @@ module ApplicationHelper
     Resort.where(ski_resort:true).group('ville').pluck('ville').each do |r|
       list_of_station << titleize(r)
     end
+    list_of_station.sort
     return(list_of_station)
 
   end

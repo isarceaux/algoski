@@ -12,12 +12,12 @@ class ListingResorts
   def get_regions_of_resorts
     
     region_links=[]
-    urls = ["https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes",
-      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-pyrenees",
-      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-massif-central",
-      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-vosges-jura",
-      "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski"]
-    # urls = ['https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski']
+    # urls = ["https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-alpes",
+    #   "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-pyrenees",
+    #   "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-massif-central",
+    #   "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski/ski-vosges-jura",
+    #   "https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski"]
+    urls = ['https://www.abritel.fr/info/guide/idees/vacances-montagne/vacances-ski']
     urls.each do |url|
       resp = HTTParty.get(url); nil
       region_links = region_links + resp.split("\n").grep(/<li><a href="\/annonces\/location-vacances\/.*php/).map{|href| href.split("\"")[1]}
