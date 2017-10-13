@@ -157,7 +157,7 @@
                                           
                                             <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
                                                 <div class="input-group">
-                                                    <%= select_tag(:ville, options_for_select(list_station), class:'form-control', multiple: false) %>
+                                                    <%= select_tag(:ville, options_for_select(list_station.sort), class:'form-control', multiple: false) %>
                                                     <span class="input-group-btn">
                                                         <%= submit_tag "OK", class: "btn btn-primary" %>
                                                   </span>

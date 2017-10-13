@@ -12,7 +12,7 @@
                 <p>Vérifier que votre station est dans la liste :</p>
                 <%= form_tag({controller: "pages", action: "home"}, method: :get, class:"form-inline col-xs-12" ) do %>
                 <div class="input-group">
-                    <%= select_tag(:ville_searched, options_for_select(list_station), class:'form-control select-resort select2', multiple: false) %>
+                    <%= select_tag(:ville_searched, options_for_select(list_station.sort), class:'form-control select-resort select2', multiple: false) %>
                 <% end %>          
                 </div>
               </div>
