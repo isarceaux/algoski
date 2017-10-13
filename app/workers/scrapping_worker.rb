@@ -53,12 +53,7 @@ class ScrappingWorker
 
     search_results.each do |r|
       if r['averagePrice'] && r['headline'] && r['detailPageUrl']
-        if Classified.find_by(link: r["detailPageUrl"], start_date: date)
-          @double += 1
-          Sidekiq.logger.info "------------------!!! already in database !!!------------------"
-          next
-        end
-
+        
         geography = r['regionPathHierarchy'].split(':')
 
         c = Classified.new(
@@ -81,13 +76,54 @@ class ScrappingWorker
         current_resort = Resort.find_by_ville(c.ville) 
         if current_resort
           c.resort = current_resort
-          c.save
+          if Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            @double += 1
+            Sidekiq.logger.info "------------------!!! Already in database - will be updated !!!------------------"
+            current_classified                        = Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            current_classified.start_date             = c.start_date
+            current_classified.end_date               = c.end_date
+            current_classified.title                  = c.title
+            current_classified.price                  = c.price
+            current_classified.link                   = c.link
+            current_classified.number_of_guests       = c.number_of_guests
+            current_classified.abritel_id             = c.abritel_id
+            current_classified.abritel_classified_id  = c.abritel_classified_id
+            current_classified.country                = c.country
+            current_classified.region                 = c.region
+            current_classified.departement            = c.departement
+            current_classified.ville                  = c.ville
+            current_classified.quartier               = c.quartier
+            current_classified.save
+          else
+            c.save
+          end
           Sidekiq.logger.info "-*-*-*-Resort could be found with ville-*-*-*-"
         elsif r["geography"]["ids"][1]
           Resort.create(region_number:r["geography"]["ids"][1]["value"],ville:c['ville'],ville_url:URI.escape(c['ville']))
           Sidekiq.logger.info "-*-*-*-New Resort created-*-*-*-"
           c.resort = Resort.last
-          c.save
+          if Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            @double += 1
+            Sidekiq.logger.info "------------------!!! Already in database - will be updated !!!------------------"
+            Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            current_classified                        = Classified.find_by(link: r["detailPageUrl"], start_date: date)
+            current_classified.start_date             = c.start_date
+            current_classified.end_date               = c.end_date
+            current_classified.title                  = c.title
+            current_classified.price                  = c.price
+            current_classified.link                   = c.link
+            current_classified.number_of_guests       = c.number_of_guests
+            current_classified.abritel_id             = c.abritel_id
+            current_classified.abritel_classified_id  = c.abritel_classified_id
+            current_classified.country                = c.country
+            current_classified.region                 = c.region
+            current_classified.departement            = c.departement
+            current_classified.ville                  = c.ville
+            current_classified.quartier               = c.quartier
+            current_classified.save
+          else
+            c.save
+          end
         else
           Sidekiq.logger.info "-*-*-*-Cannot record because can't link Classified with a Resort-*-*-*-"
         end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012140532) do
+ActiveRecord::Schema.define(version: 20171013084324) do
 
   create_table "averages", force: :cascade do |t|
     t.date "start_date"
@@ -26,6 +26,39 @@ ActiveRecord::Schema.define(version: 20171012140532) do
 
 # Could not dump table "classifieds" because of following StandardError
 #   Unknown type 'jsonb' for column 'json_data'
+
+  create_table "housings", force: :cascade do |t|
+    t.string "title"
+    t.integer "number_of_guests"
+    t.string "link"
+    t.boolean "accepts_home_away_payments"
+    t.boolean "accepts_offline_payments"
+    t.boolean "accepts_credit_cards"
+    t.boolean "integrated_property_manager"
+    t.boolean "multi_unit_property"
+    t.boolean "online_bookable"
+    t.boolean "instant_bookable"
+    t.integer "number_of_bedrooms"
+    t.integer "number_of_bathrooms_full"
+    t.integer "number_of_bathrooms_half"
+    t.integer "number_of_bathrooms_toilet_only"
+    t.integer "number_of_bathrooms_full_and_half"
+    t.integer "image_count"
+    t.string "property_name"
+    t.string "property_type"
+    t.float "geocode_latitude"
+    t.float "geocode_longitude"
+    t.boolean "geocode_exact"
+    t.float "average_rating"
+    t.float "scaled_average_rating"
+    t.integer "review_count"
+    t.integer "min_stay_range_low"
+    t.integer "min_stay_range_high"
+    t.integer "resort_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resort_id"], name: "index_housings_on_resort_id"
+  end
 
   create_table "resorts", force: :cascade do |t|
     t.string "name"

@@ -5,4 +5,6 @@ class Resort < ApplicationRecord
   has_many :users, :through => :subscriptions
 
   has_many :averages
+
+  has_many :housings
 end
