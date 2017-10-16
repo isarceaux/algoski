@@ -33,7 +33,7 @@
                 ykeys: ['average_value'],
                 labels: ['7 jours'],
                 postUnits: '€',
-                yLabelFormat: function(y) {return y = Math.round(y)*7;},
+                yLabelFormat: function(y) {return y = Math.round(y)*7 + '€';},
                 resize: true,
                 lineColors: ['#6e8cd7']
             });
@@ -44,38 +44,19 @@
 
 
     //donut Morris chart
-         var MorrisCharts = function() {};
+        Morris.Donut({
+          element: 'morris-donut-housing',
+          data: gon.property_type,
+          formatter: function (y, data) { return Math.round((y*1000))/10 + '%' },
+          colors: ['#90A3DA', '#72B8E0', '#72B282', '#E9CD7B', '#C9615C', '#413A55', '#E5718D', '#714E9E'],
+        });
 
-        //creates Donut chart
-        MorrisCharts.prototype.createDonutChart = function(element, data, colors) {
-            Morris.Donut({
-                element: element,
-                data: data,
-                colors: colors
-            });
-        },
-        MorrisCharts.prototype.initcomment = function() {
-
-            //creating donut chart
-            var $donutData = [
-                    {label: "Aucun commentaire", value: 75},
-                    {label: "1 commentaire ou +", value: 25},
-                ];
-            this.createDonutChart('morris-donut-comments', $donutData, ['#dcdcdc', '#6e8cd7']);
-        },
-        $.MorrisCharts = new MorrisCharts, $.MorrisCharts.Constructor = MorrisCharts
-
-        MorrisCharts.prototype.inithousing = function() {
-
-            //creating donut chart
-            var $donutData = [
-                    {label: "Chalet", value: 15},
-                    {label: "Appartement", value: 65},
-                    {label: "Autres", value: 20},
-                ];
-            this.createDonutChart('morris-donut-housing', $donutData, ['#79D1CF', '#4D5360', '#95D7BB']);
-        },
-        $.MorrisCharts = new MorrisCharts, $.MorrisCharts.Constructor = MorrisCharts
+        Morris.Donut({
+          element: 'morris-donut-comments',
+          data: gon.comment_data,
+          formatter: function (y, data) { return Math.round(y*100) + '%' },
+          colors: ['#dcdcdc', '#6e8cd7'],
+        });
         
     }(window.jQuery),
 
@@ -83,8 +64,8 @@
     function($) {
         "use strict";
         $.Dashboard.init();
-        $.MorrisCharts.initcomment();
-        $.MorrisCharts.inithousing();
+        // $.MorrisCharts.initcomment();
+        // $.MorrisCharts.inithousing();
     }(window.jQuery);
 
 
