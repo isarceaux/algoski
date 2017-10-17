@@ -92,6 +92,7 @@ class DashboardsController < ApplicationController
 
   end
 
+
   def profile
     @user = current_user
 
@@ -114,6 +115,10 @@ class DashboardsController < ApplicationController
 
     @subscriptions = Subscription.where(user_id:current_user.id)
 
+  end
+
+  def map
+    
   end
 
 end

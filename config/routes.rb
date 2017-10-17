@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'dashboards/profile'
 
+  get 'dashboards/map'
+
   get 'dashboards', to: 'dashboards#analysis'
 
   get 'pages/home'
