@@ -6,5 +6,4 @@
 //= require jquery.nicescroll
 //= require jquery.app
 
-//= require dashboardmapjs/gmaps
-//= require dashboardmapjs/gmaps-plugin
+//= require dashboardmapjs/gmaps-data

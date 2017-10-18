@@ -4,34 +4,40 @@
 <section class="content">
     
  <%= render 'header' %>
+<div class="wraper container-fluid">
+    <div class="page-title"> 
+        <h3 class="title">Carte des annonces</h3> 
+    </div>
 
- <div class="col-lg-6">
-                        <div class="portlet"><!-- /primary heading -->
-                            <div class="portlet-heading">
-                                <h3 class="portlet-title text-dark">
-                                    Markers
-                                </h3>
-                                <div class="portlet-widgets">
-                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
-                                    <span class="divider"></span>
-                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
-                                    <span class="divider"></span>
-                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div id="portlet2" class="panel-collapse collapse in">
-                                <div class="portlet-body">
-                                    <div id="gmaps-markers" class="gmaps"></div> 
-                                </div>
-                            </div>
-                        </div>
+     <div class="col-lg-12">
+        <div class="portlet"><!-- /primary heading -->
+            <div class="portlet-heading">
+                <h3 class="portlet-title text-dark" id="title-map">
+                    Intitulé de l'annonce
+                </h3>
+                <div class="portlet-widgets" >
+                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                    <span class="divider"></span>
+                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                    <span class="divider"></span>
+                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="portlet2" class="panel-collapse collapse in">
+                <div class="portlet-body" style="height: 500px;">
+                    <div id="map" class="gmaps" style="height: 100%;"></div> 
+                </div>
+            </div>
+        </div>
 
-                    </div>
+    </div>
+</div>
 
    <%= render 'footer' %>
 
 </section>
 
-<%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true' %>
 <%= javascript_include_tag 'dashboardmapjs/application.js', 'data-turbolinks-track': 'reload'%>
+<%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB8f_4UG0MvBauG5_TyseuiqrARZv3c2MA&callback=initMap' %>
+<!-- &callback=initMap -->

@@ -87,7 +87,7 @@ class DashboardsController < ApplicationController
     @station_name = current_resort.ville
 
     #Determining the classifieds to be displayed
-    classifieds_hash[current_resort.ville] = Classified. where(resort_id:current_resort.id)
+    classifieds_hash[current_resort.ville] = Classified.where(resort_id:current_resort.id)
     @selected_classifieds = classifieds_hash[current_resort.ville]
 
   end
@@ -118,6 +118,29 @@ class DashboardsController < ApplicationController
   end
 
   def map
+    @action_tag = 'map'
+    
+    # Initialization
+    gon.points = []
+
+    current_resort = current_resort_calculation
+
+    if params[:current_resort] != "" && params[:current_resort]
+      current_resort = Resort.find_by( ville:params[:current_resort] )
+    end 
+    
+    @station_name = current_resort.ville
+
+    selected_housings = Housing.where(resort_id:current_resort.id)
+    selected_housings.each do |sc|
+      gon.points << [sc.title, sc.geocode_latitude, sc.geocode_longitude,"www.abritel.fr"+sc.link]
+    end
+
+    gon.centerlat = ( selected_housings.maximum('geocode_latitude') + selected_housings.minimum('geocode_latitude') ) / 2
+    gon.centerlng = ( selected_housings.maximum('geocode_longitude') + selected_housings.minimum('geocode_longitude') ) / 2
+    # gon.centerlng = Housing.where(resort_id:current_resort.id).average('geocode_longitude')
+
+
     
   end
 
