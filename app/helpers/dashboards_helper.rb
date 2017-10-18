@@ -19,9 +19,9 @@ module DashboardsHelper
   def list_of_resorts
     list = []
     current_user.subscriptions.each do |s|
-      list << s.resort.ville
+      list << titleize(s.resort.ville)
     end
-    return list
+    return list.sort
   end
 
   def current_resort_calculation

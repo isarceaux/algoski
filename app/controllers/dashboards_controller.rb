@@ -20,7 +20,7 @@ class DashboardsController < ApplicationController
     end 
 
     if params[:current_resort] != "" && params[:current_resort]
-      current_resort = Resort.find_by( ville:params[:current_resort] )
+      current_resort = Resort.find_by( ville:params[:current_resort].downcase )
     end 
     
     @station_name = current_resort.ville
