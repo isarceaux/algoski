@@ -5,8 +5,13 @@ L'idée est de faire un beau site en utilisant un template déjà bien pensé : 
 Le back partira de ce qui a déjà été fait auparavant sur le projet Tignes-Scrapping.
 
 --- 
-Voici les premières to-dos :
-- évolutions du back
-  - rajouter des entrées supplémentaires pour le scrapping (afin d'avoir un dashboard plus intéressant)
-  - mettre en place la mise à jour d'une entrée dans le scrapping (pour pouvoir quand même utiliser la base existante)
-  - mettre en place le paiement avec stripe
+Voici les dernières to-dos :
+- régler le problème de la table qui met du temps à charger
+- DEMO :
+  - rajouter un logo démo
+  - choisir une station moins stylé pour la démo
+  - enlever l'accès à la table
+- problème d'un police google sur une page qui fait sauter le https
+- abonnements 
+  - afficher la liste des stations dispo dans la page profil
+  - mettre plus en avant le bouton s'abonner
