@@ -73,6 +73,12 @@ class DashboardsController < ApplicationController
   end
 
   def data_table
+
+    @demo = true 
+    if user_signed_in? && current_user.subscriptions[0] != nil
+      @demo = false
+    end
+
     @action_tag = 'data_table'
     
     # Initialization
@@ -94,6 +100,7 @@ class DashboardsController < ApplicationController
 
 
   def profile
+
     @user = current_user
 
     #Inscription
@@ -118,6 +125,12 @@ class DashboardsController < ApplicationController
   end
 
   def map
+
+    @demo = true 
+    if user_signed_in? && current_user.subscriptions[0] != nil
+      @demo = false
+    end
+    
     @action_tag = 'map'
     
     # Initialization

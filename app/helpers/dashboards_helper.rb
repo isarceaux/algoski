@@ -29,10 +29,10 @@ module DashboardsHelper
       if current_user.subscriptions[0] != nil
         current_resort = current_user.subscriptions.first.resort
       else
-        current_resort = Resort.find_by(ville:'tignes')
+        current_resort = Resort.find_by(ville:'morillon')
       end
     else
-      current_resort = Resort.find_by(ville:'tignes')
+      current_resort = Resort.find_by(ville:'morillon')
     end
 
     return current_resort

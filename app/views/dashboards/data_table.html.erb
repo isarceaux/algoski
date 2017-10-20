@@ -26,7 +26,6 @@
                     <th><i class="fa fa-user" aria-hidden="true"></i></th>
                     <!-- <th>Prix</th>
                     <th>Nom de l'annonce</th> -->
-                    <!-- <th>Code annonce</th> -->
                   </tr>
                 </tfoot>  
                 <thead>
@@ -35,7 +34,6 @@
                     <th><i class="fa fa-user" aria-hidden="true"></i></th>
                     <th>Prix</th>
                     <th>Nom de l'annonce</th>
-                    <!-- <th>Code annonce</th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -45,7 +43,6 @@
                     <td><%= sc.number_of_guests %></td>
                     <td><%= (sc.price*7).round %>€</td>
                     <td><a target="_blank" href="http://www.abritel.fr<%=sc.link%>"><%= sc.title %></a></td>
-                    <!-- <td><%= sc.abritel_classified_id%></td> -->
                   </tr>
                 <% end %>
                 </tbody>
@@ -64,4 +61,4 @@
 
 </section>
 
-<%= javascript_include_tag 'dashboarddatatablejs/application.js', 'data-turbolinks-track': 'reload'%>
+<%= javascript_include_tag 'dashboarddatatablejs/application.js', 'data-turbolinks-track': 'reload' %>

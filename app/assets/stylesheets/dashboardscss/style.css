@@ -457,6 +457,12 @@ header {
   font-size: 14px;
 }
 
+.demo-title
+{
+  font-size: 0.8em;
+  color: red;
+}
+
 
 /***************** 4.Content Area (right) ****************/
 

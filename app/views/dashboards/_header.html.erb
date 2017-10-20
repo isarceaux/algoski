@@ -25,16 +25,23 @@
                 <% end %>  
 
             <% else %>
-                
-                <h3><%= titleize(@station_name) %></h3>
-                <% if @number_of_guests %>
-                    <h4>capacité d'accueil : </h4>
-                        <%= form_tag( { controller: "dashboards", action: "analysis" }, method: :get, class:"form-inline col-xs-3" ) do %>
-                            <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10,12] ), class:'form-control select2 col-xs-1', multiple: false, prompt: @number_of_guests ) %>
-                            <span class="input-group-btn">
-                                <%= submit_tag "OK", class: "btn btn-primary" %>
-                            </span>
-                        <% end %>          
+                <% if @demo = true %>
+                    <% if @number_of_guests %>
+                        <h3><%= titleize(@station_name) %> 4 <i class="fa fa-user" aria-hidden="true"></i> <span class="demo-title"> (démo)</span></h3>
+                    <% else %>
+                    <h3><%= titleize(@station_name) %><span class="demo-title"> (démo)</span></h3>
+                    <% end %>
+                <% else %>
+                    <h3><%= titleize(@station_name) %></h3>
+                    <% if @number_of_guests %>
+                        <h4>capacité d'accueil : </h4>
+                            <%= form_tag( { controller: "dashboards", action: "analysis" }, method: :get, class:"form-inline col-xs-3" ) do %>
+                                <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10,12] ), class:'form-control select2 col-xs-1', multiple: false, prompt: @number_of_guests ) %>
+                                <span class="input-group-btn">
+                                    <%= submit_tag "OK", class: "btn btn-primary" %>
+                                </span>
+                            <% end %>          
+                    <% end %>
                 <% end %>
 
             <% end %>
