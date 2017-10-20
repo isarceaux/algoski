@@ -54,7 +54,12 @@
                                                 </div>
                                             <% end %>    
                                         <% else %>
-                                            <%= link_to "S'abonner pour accéder au contenu",new_charge_path %>
+                                            <%= link_to new_charge_path do %>
+                                                <div class="flex-row">
+                                                    <span class="btn custom-btn bg-danger"> Souscrire</span>
+                                                    <span style="margin-left:5px;"> pour accéder au contenu</span>
+                                                </div>
+                                            <% end %>
                                             <!-- <a href="">S'abonner pour accéder au contenu</a> -->
                                         <% end %>
 
@@ -115,7 +120,12 @@
                                     <%  elsif current_user.account == 'individual' %>
                                         Avez votre compte vous ne pouvez être abonné qu'à une seule station. Si vous souhaitez être abonné à plus de stations suivez ce <%= link_to 'lien', new_charge_path %>
                                     <% else %>
-                                        Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord : <%= link_to 'souscrire', new_charge_path %>.
+                                        <div class="flex-row container-center">
+                                            <span style="margin-right:10px;">Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord :</span>
+                                            <%= link_to new_charge_path do %>
+                                                <span class="btn custom-btn bg-danger"> Souscrire</span>
+                                            <% end %>
+                                        </div>
                                     <% end %>
                                     <% if @subscriptions == nil || @subscriptions.count == 0 %>
                                       <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>

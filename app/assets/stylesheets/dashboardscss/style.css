@@ -1680,6 +1680,12 @@ ul.social-icons li a i {
   display: block;
 }
 
+.container-center
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 /************* 17.Timeline **********/
 /* Timeline */

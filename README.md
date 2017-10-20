@@ -8,7 +8,7 @@ Le back partira de ce qui a déjà été fait auparavant sur le projet Tignes-Sc
 Voici les dernières to-dos :
 - régler le problème de la table qui met du temps à charger
 - DEMO :
-  - rajouter un logo démo
+  X rajouter un logo démo
   X choisir une station moins stylé pour la démo : Morillon
   - enlever l'accès à la table
 X problème d'un police google sur une page qui fait sauter le https
