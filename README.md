@@ -13,5 +13,7 @@ Voici les dernières to-dos :
   - enlever l'accès à la table
 X problème d'un police google sur une page qui fait sauter le https
 - abonnements 
-  - afficher la liste des stations dispo dans la page profil
-  - mettre plus en avant le bouton s'abonner
+  X mettre plus en avant le bouton s'abonner
+- liste de stations disponibles
+  - faire plutôt une liste sur la page d'acceuil qu'un menu déroulant
+  - faire la même chose dans la page profil
