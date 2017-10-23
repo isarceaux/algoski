@@ -30,7 +30,9 @@
                         <li>Tous appartements et chalets</li>
                         <li><span style="font-weight: bold">1 station de ski</span>, au choix parmis nos <%= @resort_count %> stations</li>
                       </ul>
-                      <button class="btn btn-pink w-md">S'inscrire</button>
+                      <%= link_to new_user_registration_path do %>
+                        <button class="btn btn-pink w-md">S'inscrire</button>
+                      <% end %>
                     </div>
                     <span class="tip">* Plus répandue chez les particuliers propriétaires</span>
                   </div> <!-- end col -->
@@ -46,7 +48,9 @@
                         <li>Tous appartements et chalets</li>
                         <li style="font-weight: bold">Toutes les stations de ski de notre base : <%= @resort_count %> stations</li>
                       </ul>
-                      <button class="btn btn-purple w-md">S'inscrire</button>
+                      <%= link_to new_user_registration_path do %>
+                        <button class="btn btn-purple w-md">S'inscrire</button>
+                      <% end %>
                     </div> <!-- end Pricing_card -->
                   </div> <!-- end col -->
                 </div> <!-- end row -->
