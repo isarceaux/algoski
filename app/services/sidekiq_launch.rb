@@ -4,18 +4,25 @@ class SidekiqLaunch
 
   def initialize
     
-    @regions = Resort.where(ski_resort:true).all.pluck(:region_number)
+    @regions = []
+    villes = Classified.group("ville").order("ville").pluck("ville")
+
+    villes.each do |i|
+      if i
+        if Resort.find_by_ville(I18n.transliterate(i))
+           if Classified.where("ville":"#{i}").count > 100 
+             @regions << Resort.find_by_ville(i).region_number
+          end
+        end
+      end
+    end
+  
+    # @regions = Resort.all.pluck(:region_number)
     # @regions = ['66612889','66612807','66612786','66612960','66612917','66612918','66612972','66612919','66612803','66612962'] #Les trois vallées + Tignes et Val d'Isère
     # @regions = ['66612889','66612807']
     
   end
 
-  def perform
-    
-    # scrapping
-    calculation
-
-  end
 
   def scrapping
     @regions.each do |region|
