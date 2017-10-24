@@ -1,9 +1,9 @@
 module ApplicationHelper
   def list_station
     # #take all ville in an array
-    # villes = Classified.group("ville").order("ville").pluck("ville")
+    villes = Classified.group("ville").order("ville").pluck("ville")
     # #iterate over the array
-    # list_of_station = []
+    list_of_station = []
     # regions = ['66612889','66612807','66612786','66612960','66612917','66612918','66612972','66612919','66612803','66612962'] #Les trois vallées + Tignes et Val d'Isère
 
     # villes.each do |i|
@@ -15,10 +15,21 @@ module ApplicationHelper
     #     end
     #   end
     # end
-    list_of_station = []
-    Resort.where(ski_resort:true).group('ville').pluck('ville').each do |r|
-      list_of_station << titleize(r)
+
+    villes.each do |i|
+      if i
+        if Resort.find_by_ville(I18n.transliterate(i))
+           if Classified.where("ville":"#{i}").count > 100 
+             list_of_station.push(titleize(i))
+          end
+        end
+      end
     end
+
+    # Resort.where(ski_resort:true).group('ville').pluck('ville').each do |r|
+    #   list_of_station << titleize(r)
+    # end
+
     list_of_station.sort
     return(list_of_station)
 
