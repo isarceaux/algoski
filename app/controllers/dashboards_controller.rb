@@ -25,13 +25,13 @@ class DashboardsController < ApplicationController
     
     @station_name = current_resort.ville
 
-    # Average calculation
-
+    #Indicators
     @classifieds_count_local = Classified.where(resort:current_resort).count
     @classifieds_count_global = Classified.all.count
     @housings_count_local = Classified.where(resort:current_resort).group('link').pluck('link').count
     @housings_count_global = Classified.group('link').pluck('link').count 
     
+    # Average calculation
     gon.averages = Average.where(resort:current_resort).where(number_of_guests:@number_of_guests)
 
     # Analysis on housings

@@ -12,8 +12,8 @@ class SidekiqLaunch
 
   def perform
     
-    scrapping
-    # calculation
+    # scrapping
+    calculation
 
   end
 
