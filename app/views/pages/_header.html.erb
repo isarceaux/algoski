@@ -30,10 +30,10 @@
                       <li><%= link_to "#{current_user.email}", dashboards_profile_path %></li>
                       <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
                   <% else %>
-                      <li><a href="#how">Comment ça marche ?</a></li>
-                      <li><a href="#resorts">Stations de ski</a></li>
-                      <li><a href="#features">Fonctionnalités</a></li>
-                      <li><a href="#pricing">Tarifs</a></li>
+                      <li><%= link_to "Comment ça marche ?", pages_home_path(anchor: 'how') %></li>
+                      <li><%= link_to "Stations de ski", pages_home_path(anchor: 'resorts') %></li>
+                      <li><%= link_to "Tarifs", pages_home_path(anchor: 'pricing') %></li>
+                      <li><%= link_to "Fonctionnalités", pages_home_path(anchor: 'features') %></li>
                       <li><%= link_to "Se connecter", new_user_session_path, class:"btn-signup btn-primary" %></li>
                   <% end %>
                       </ul>

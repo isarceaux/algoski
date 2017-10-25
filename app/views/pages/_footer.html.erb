@@ -2,23 +2,27 @@
           <div class="container">
         <div class="row">
           <div class="col-lg-1 ">
-            <a class="navbar-brand-footer" href="#"><%= image_tag 'logo-grey.png', alt:'algoski', size:'40', class:'brightness'%></a>
+            <%= link_to pages_home_path, class:"navbar-brand-footer" do %>
+              <%= image_tag 'logo-grey.png', alt:'algoski', size:'40', class:'brightness'%>
+            <% end %>
           </div>
             
             <div class="col-lg-7 col-lg-offset-1 only-big-screen">
               <ul class="nav navbar-nav">
-                <li><a href="#how">Comment ça marche ?</a></li>
-                <li><a href="#resorts">Stations de ski</a></li>
-                <li><a href="#features">Fonctionnalités</a></li>
-                <li><a href="#pricing">Tarifs</a></li>
+                <li><%= link_to "Comment ça marche ?", pages_home_path(anchor: 'how') %></li>
+                <li><%= link_to "Stations de ski", pages_home_path(anchor: 'resorts') %></li>
+                <li><%= link_to "Tarifs", pages_home_path(anchor: 'pricing') %></li>
+                <li><%= link_to "Fonctionnalités", pages_home_path(anchor: 'features') %></li>
               </ul>
             </div>
 
             <div class="col-lg-2 col-lg-offset-1 only-big-screen">
               <ul class="social-icons">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li>
+                  <%= link_to contact_path do %>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <% end %>
+                </li>
               </ul>
           </div>
 
