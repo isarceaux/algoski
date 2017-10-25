@@ -1,63 +1,46 @@
 <!-- Header -->
 <header class="top-head container-fluid">
-    <button type="button" class="navbar-toggle pull-left">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    
-    <div class="custom-mid-header col-md-8">
-        <% if @station_name %>
+    <div class="custom-header">
         
-            <% if user_signed_in? && current_user.account == 'professional' && current_user.subscriptions.count > 1 %>
-            <!-- formulaire -->    
-                <%= form_tag( { controller: "dashboards", action: @action_tag }, method: :get, class:"form-inline row" ) do %>
-                    <div class="col-xs-6" style="padding:0;">
-                    <%= select_tag( :current_resort, options_for_select( list_of_resorts ), class:'form-control select2 col-xs-12', style:'width:100%;', multiple: false, prompt: titleize(@station_name) ) %>
-                    </div>
-                    <div class="col-xs-2" style="padding:0;">
-                    <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10] ), class:'form-control select2 col-xs-12', multiple: false, style:'width:100%;', prompt: @number_of_guests ) %>
-                    </div>
-                    <span class="input-group-btn">
-                        <%= submit_tag "OK", class: "btn btn-primary" %>
-                    </span>
-                <% end %>  
+        <div class="custom-header-element">
+            <button type="button" class="navbar-toggle pull-left">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
 
-            <% else %>
-                <% if @demo == true %>
-                    <% if @number_of_guests %>
-                        <h3><%= titleize(@station_name) %> 4 <i class="fa fa-user" aria-hidden="true"></i> <span class="demo-title"> (démo)</span></h3>
-                    <% else %>
-                    <h3><%= titleize(@station_name) %><span class="demo-title"> (démo)</span></h3>
-                    <% end %>
-                <% else %>
+        <div class="custom-header-element" style="width:100%;">
+            <div class="row">
+        
+                <div class="col-md-6">
                     <h3><%= titleize(@station_name) %></h3>
-                    <% if @number_of_guests %>
-                        <h4>capacité d'accueil : </h4>
-                            <%= form_tag( { controller: "dashboards", action: "analysis" }, method: :get, class:"form-inline col-xs-3" ) do %>
-                                <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10,12] ), class:'form-control select2 col-xs-1', multiple: false, prompt: @number_of_guests ) %>
-                                <span class="input-group-btn">
-                                    <%= submit_tag "OK", class: "btn btn-primary" %>
-                                </span>
-                            <% end %>          
-                    <% end %>
+                    <h4>capacité d'accueil : <%= @number_of_guests %><i class="fa fa-user" aria-hidden="true"></i></h4>
+                    
+                </div>
+
+                <div class="col-md-6">
+                    
+                    <%= render 'formresort' %>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Right navbar -->
+        <div class="custom-header-element">
+            <ul class="list-inline navbar-right top-menu top-right-menu hidden-xs">  
+               <% if user_signed_in? %>
+                    <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                    <li><%= link_to "Se connecter", new_user_session_path %></li>
                 <% end %>
+            </ul>
+        </div>
+        <!-- End right navbar -->
 
-            <% end %>
-
-        <% end %>
     </div>
-    
-    <!-- Right navbar -->
-    <ul class="list-inline navbar-right top-menu top-right-menu hidden-xs">  
-       <% if user_signed_in? %>
-            <li><%= link_to "Déconnexion",destroy_user_session_path, method: :delete %></li>
-        <% else %>
-            <li><%= link_to "Se connecter", new_user_session_path %></li>
-        <% end %>
-    </ul>
-    <!-- End right navbar -->
 
 </header>
 <!-- Header Ends -->

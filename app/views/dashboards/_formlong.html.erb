@@ -1,0 +1,12 @@
+
+<%= form_tag( { controller: "dashboards", action: @action_tag }, method: :get, class:"form-inline row", style:"padding-top:5px;" ) do %>
+    <div class="col-xs-offset-1 col-xs-6" style="padding:0;">
+    <%= select_tag( :current_resort, options_for_select( list_of_resorts ), class:'form-control select2 col-xs-12', style:'width:100%;', multiple: false ) %>
+    </div>
+    <div class="col-xs-2 col-md-1" style="padding:0;">
+    <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10] ), class:'form-control select2 col-xs-12', multiple: false, style:'width:100%;' ) %>
+    </div>
+    <span class="input-group-btn">
+        <%= submit_tag "OK", class: "btn btn-primary" %>
+    </span>
+<% end %>  

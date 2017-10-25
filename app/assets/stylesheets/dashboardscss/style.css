@@ -304,16 +304,16 @@ header {
   padding-left: 0px;
 }
 
-.custom-mid-header
+/*.custom-mid-header
 {
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
   height:58px;
-}
+}*/
 
-.custom-mid-header h3, .custom-mid-header h4
+.custom-header-element h3, .custom-header-element h4
 {
   margin-top: 0;
   margin-bottom: 0;
@@ -461,6 +461,19 @@ header {
 {
   font-size: 0.8em;
   color: red;
+}
+
+.custom-header
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.border
+{
+  border: 1px solid black;
 }
 
 
