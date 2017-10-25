@@ -7,9 +7,13 @@ class DashboardsController < ApplicationController
     @action_tag = 'analysis'
     
     @demo = true 
-    if user_signed_in? && current_user.subscriptions[0] != nil
+    if user_signed_in? && current_user.subscriptions.count > 0
       @demo = false
     end
+    # @demo = false
+    # if not user_signed_in?
+    #   @demo = true
+    # end
 
     current_resort = current_resort_calculation
 
