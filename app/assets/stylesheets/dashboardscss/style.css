@@ -1847,6 +1847,15 @@ ul.social-icons li a i {
   margin-top: 5px;
 }
 
+.warning-message-profile
+{
+  color:red;
+  padding-top: 10px;
+  a
+  {
+    color:red;
+  }
+}
 /* Timeline-2 */
 .timeline-2 {
   position: relative;

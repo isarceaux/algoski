@@ -1,4 +1,4 @@
-<!-- Aside Start-->
+ Aside Start-->
 <aside class="left-panel">
 
     <!-- brand -->
@@ -15,44 +15,45 @@
     <!-- Navbar Start -->
     <nav class="navigation">
         <ul class="list-unstyled">
-            <li class=<%= cp(dashboards_analysis_path) %> >
-            <%= link_to dashboards_analysis_path do %>
-                <i class="ion-stats-bars"></i> 
-                <span class="nav-label">Analyses</span>
-            <% end %>
-            </li>
 
-            <li class=<%= cp(dashboards_map_path) %>>
-            <%= link_to dashboards_map_path do %>
-                <i class="ion-location"></i> 
-                <span class="nav-label">Carte</span>
-            <% end %>
-            </li>
+            <% if current_user.account != nil && current_user.subscriptions.count > 0 %>
 
-            <li class=<%= cp(dashboards_data_table_path) %>>
-            <%= link_to dashboards_data_table_path do %>
-                <i class="ion-grid"></i> 
-                <span class="nav-label">Tableau</span>
-            <% end %>
-            </li>
-
-            <% if user_signed_in? %>
-                <li class=<%= cp(dashboards_profile_path) %>>
-                <%= link_to dashboards_profile_path do %>
-                    <i class="ion-person"></i> 
-                    <span class="nav-label">Mon compte</span>
+                <!-- Analysis - Map - Table -->
+                <li class=<%= cp(dashboards_analysis_path) %> >
+                <%= link_to dashboards_analysis_path do %>
+                    <i class="ion-stats-bars"></i> 
+                    <span class="nav-label">Evolution des prix</span>
                 <% end %>
                 </li>
-            <% else %>
-                <li>
-                    <%= link_to new_user_session_path do %>
-                    <i class="ion-person"></i> 
-                    <span class="nav-label">Se connecter</span>
-                    <% end %>
+
+                <li class=<%= cp(dashboards_map_path) %>>
+                <%= link_to dashboards_map_path do %>
+                    <i class="ion-location"></i> 
+                    <span class="nav-label">Carte des concurrents</span>
+                <% end %>
                 </li>
+
+                <li class=<%= cp(dashboards_data_table_path) %>>
+                <%= link_to dashboards_data_table_path do %>
+                    <i class="ion-grid"></i> 
+                    <span class="nav-label">Tableau des concurrents</span>
+                <% end %>
+                </li>
+                <!-- end of analysis - map - table -->
+
             <% end %>
+
+            <!-- Mon compte -->
+            <li class=<%= cp(dashboards_profile_path) %>>
+            <%= link_to dashboards_profile_path do %>
+                <i class="ion-person"></i> 
+                <span class="nav-label">Mon compte</span>
+            <% end %>
+            </li>
+            <!-- end of mon compte -->
+
         </ul>
     </nav>
         
 </aside>
-<!-- Aside Ends-->
+<!-- Aside Ends

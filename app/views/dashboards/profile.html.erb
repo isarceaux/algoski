@@ -62,6 +62,16 @@
                                             <% end %>
                                             <!-- <a href="">S'abonner pour accéder au contenu</a> -->
                                         <% end %>
+                                        
+                                        <% if @user.account != nil && @user.subscriptions.count == 0 %>
+                                            <div class="warning-message-profile" >
+                                                <p>Aller dans l'onglet <span style="text-decoration: underline;"> "Mes stations de Skis"</span> pour choisir une station et accéder aux données</p>
+                                            </div>
+                                        <% elsif @user.account == nil %>
+                                            <div class="warning-message-profile" >
+                                                <p>Vous devez souscrire pour accéder au contenu en cliquant sur le bouton ci-dessus</p>
+                                            </div>
+                                        <% end %>
 
 
                                         <table class="table table-condensed">
