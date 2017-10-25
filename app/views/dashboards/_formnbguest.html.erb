@@ -3,7 +3,7 @@
         <%= label_tag( :number_of_guests, "Ajuster la capacité d'accueil",  class:'col-xs-12', style:'width:100%;padding-top:5px;') %>
     </div>
     <div class="col-xs-2 col-md-1" style="padding:0;">
-        <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10] ), class:'form-control select2 col-xs-12', multiple: false, style:'width:100%;' ) %>
+        <%= select_tag( :number_of_guests, options_for_select( [2,4,6,8,10] ), class:'form-control col-xs-12', multiple: false, style:'width:100%;' ) %>
     </div>
     <span class="input-group-btn">
         <%= submit_tag "OK", class: "btn btn-primary" %>

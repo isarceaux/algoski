@@ -15,14 +15,24 @@
             <div class="row">
         
                 <div class="col-md-6">
-                    <h3><%= titleize(@station_name) %></h3>
-                    <h4>capacité d'accueil : <%= @number_of_guests %><i class="fa fa-user" aria-hidden="true"></i></h4>
-                    
+                    <% if @action_tag == 'analysis' %>
+                        <h3><%= titleize(@station_name) %></h3>
+                        <h4>capacité d'accueil : <%= @number_of_guests %><i class="fa fa-user" aria-hidden="true"></i></h4>
+                    <% elsif @action_tag == 'data_table' || @action_tag == 'map' %>
+                        <h3 style="padding-top: 5px;"><%= titleize(@station_name) %></h3>
+                    <% end %>
                 </div>
 
                 <div class="col-md-6">
-                    
-                    <%= render 'formresort' %>
+                    <% if @action_tag == 'analysis' %>
+                        <% if current_user.subscriptions.count > 1 %>
+                            <%= render 'formlong' %>
+                        <% else %>
+                            <%= render 'formnbguest' %>
+                        <% end %>
+                    <% elsif ( @action_tag == 'data_table' || @action_tag == 'map' ) && current_user.subscriptions.count > 1 %>
+                        <%= render 'formresort' %>
+                    <% end %>
                 </div>
             </div>
 

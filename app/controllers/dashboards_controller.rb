@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+  before_action :authenticate_user!
 
   layout 'application_dashboard'
   include DashboardsHelper
@@ -106,6 +107,7 @@ class DashboardsController < ApplicationController
   def profile
 
     @user = current_user
+    @action_tag = 'profile'
 
     #Inscription
     s = Subscription.new
