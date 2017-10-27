@@ -7,17 +7,12 @@ class DashboardsController < ApplicationController
   def analysis
     @action_tag = 'analysis'
     
-    @demo = true 
-    if user_signed_in? && current_user.subscriptions.count > 0
-      @demo = false
-    end
-    # @demo = false
-    # if not user_signed_in?
-    #   @demo = true
+    # @demo = true 
+    # if user_signed_in? && current_user.subscriptions.count > 0
+    #   @demo = false
     # end
-
+    
     current_resort = current_resort_calculation
-
     @number_of_guests = 4 # To be changed with params and current_user data
     
     if params[:number_of_guests]

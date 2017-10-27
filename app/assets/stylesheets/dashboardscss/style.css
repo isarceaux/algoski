@@ -471,6 +471,11 @@ header {
   align-items: center;
 }
 
+.custom-header-element
+{
+  
+}
+
 .border
 {
   border: 1px solid black;

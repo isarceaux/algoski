@@ -13,8 +13,8 @@
 //= require dashboardanalysisjs/jquery.counterup.min
 
 //Morris chart
-//= require dashboardanalysisjs/morris.min
 //= require dashboardanalysisjs/raphael.min
+//= require dashboardanalysisjs/morris.min
 
 //C3 chart
 //= require dashboardanalysisjs/d3.v3.min
