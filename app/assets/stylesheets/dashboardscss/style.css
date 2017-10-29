@@ -469,11 +469,14 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  /*margin-top: 0;
+  padding-top: 0;*/
 }
 
 .custom-header-element
 {
-  
+  /*margin-top: 0; 
+  padding-top: 0;*/
 }
 
 .border
