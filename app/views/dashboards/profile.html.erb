@@ -251,7 +251,7 @@
 
                                         <div class="form-group m-t-30">
                                           <div class="col-sm-12 text-center">
-                                              Insatisfait ? <%= link_to t('.cancel_my_account', default: 'Supprimer mon compte'), registration_path(resource_name), data: { confirm: t('.are_you_sure', default: "Etes-vous sûr(e)?") }, method: :delete %>
+                                              Insatisfait ? <%= link_to t('.cancel_my_account', default: 'Supprimer mon compte'), registration_path(resource_name), data: { confirm: t('.are_you_sure', default: "Etes-vous sûr(e)?") }, method: :destroy %>
                                           </div>
                                         </div>
 

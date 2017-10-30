@@ -33,6 +33,12 @@ p {
 .pb0 {
   padding-bottom: 0px;
 }
+
+.border
+{
+  border: 1px solid black;
+}
+
 /* ---- Width-Sizes ---*/
 
 .w-xs {

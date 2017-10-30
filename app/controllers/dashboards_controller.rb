@@ -7,11 +7,6 @@ class DashboardsController < ApplicationController
   def analysis
     @action_tag = 'analysis'
     
-    # @demo = true 
-    # if user_signed_in? && current_user.subscriptions.count > 0
-    #   @demo = false
-    # end
-    
     current_resort = current_resort_calculation
     @number_of_guests = 4 # To be changed with params and current_user data
     
@@ -153,8 +148,6 @@ class DashboardsController < ApplicationController
     gon.centerlat = ( selected_housings.maximum('geocode_latitude') + selected_housings.minimum('geocode_latitude') ) / 2
     gon.centerlng = ( selected_housings.maximum('geocode_longitude') + selected_housings.minimum('geocode_longitude') ) / 2
     # gon.centerlng = Housing.where(resort_id:current_resort.id).average('geocode_longitude')
-
-
     
   end
 
