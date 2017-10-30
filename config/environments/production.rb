@@ -107,7 +107,8 @@ Rails.application.configure do
     port: 587,
     domain: ENV["OVH_DOMAIN"],
     authentication: "plain",
-    enable_starttls_auto: false,
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none',
     user_name: ENV["OVH_USERNAME"],
     password: ENV["OVH_PASSWORD"]
   }
