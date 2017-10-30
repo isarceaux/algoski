@@ -46,6 +46,10 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+  #Forcing Devise to use ssl connection
+  config.to_prepare { Devise::SessionsController.force_ssl }
+  config.to_prepare { Devise::RegistrationsController.force_ssl }
+  config.to_prepare { Devise::PasswordsController.force_ssl }
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -90,7 +94,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Configuring mailer to work in production
-  config.action_mailer.default_url_options = { :host => 'algo.ski' }
+  config.action_mailer.default_url_options = { protocol: 'https', :host => 'algo.ski' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
