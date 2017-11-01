@@ -476,3 +476,11 @@ ul.social-icons li a i {
   background-color: pink;
 }
 
+.contact
+{
+  height: 90vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
