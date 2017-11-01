@@ -40,7 +40,7 @@
 
                                 <div class="tab-content m-0"> 
 
-                                    <div id="aboutme" class="tab-pane active">
+                                <div id="aboutme" class="tab-pane active">
                                     <div class="profile-desk">
                                         <h1><%= titleize(@user.first_name) %> <%= @user.last_name %></h1>
                                         
@@ -123,70 +123,70 @@
 
                             <!-- Resorts list and subscriptions -->
                                 <div id="myresorts" class="tab-pane">
-                                <div class="profile-desk">
-                                <div class='row not-subscribed'>
-                                    <% if current_user.account == 'professional' %>
-                                        Vous avez un compte professionnel, vous pouvez donc ajouter autant de stations de ski que vous le souhaitez.
-                                    <%  elsif current_user.account == 'individual' %>
-                                        Avez votre compte vous ne pouvez être abonné qu'à une seule station. Si vous souhaitez être abonné à plus de stations suivez ce <%= link_to 'lien', new_charge_path %>
-                                    <% else %>
-                                        <div class="flex-row container-center">
-                                            <span style="margin-right:10px;">Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord :</span>
-                                            <%= link_to new_charge_path do %>
-                                                <span class="btn custom-btn bg-danger"> Souscrire</span>
-                                            <% end %>
-                                        </div>
-                                    <% end %>
-                                    <% if @subscriptions == nil || @subscriptions.count == 0 %>
-                                      <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
-                                    <% end %>
-                                </div>
-
-                                    <div class="row">
-                                      <div class="col-md-offset-1 col-md-10">
+                                    <div class="profile-desk">
+                                    <div class='row not-subscribed'>
                                         <% if current_user.account == 'professional' %>
-                                            <% @subscriptions.each do |s| %>
-                                              <div class="col-md-3">        
-                                                  <div class="station-bloc">
-                                                    <div class='col-md-offset-10'>
-                                                      <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
-                                                        <i class='fa fa-times'></i>
-                                                      <% end %>
-                                                    
-                                                    </div>
-                                                      <%= link_to dashboards_analysis_path do %>
-                                                        <h2> <%= titleize(s.resort.ville)%> </h2>
-                                                      <% end %>
-                                                  </div>
-                                              </div>
-                                            <% end %>
+                                            Vous avez un compte professionnel, vous pouvez donc ajouter autant de stations de ski que vous le souhaitez.
+                                        <%  elsif current_user.account == 'individual' %>
+                                            Avez votre compte vous ne pouvez être abonné qu'à une seule station. Si vous souhaitez être abonné à plus de stations suivez ce <%= link_to 'lien', new_charge_path %>
+                                        <% else %>
+                                            <div class="flex-row container-center">
+                                                <span style="margin-right:10px;">Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord :</span>
+                                                <%= link_to new_charge_path do %>
+                                                    <span class="btn custom-btn bg-danger"> Souscrire</span>
+                                                <% end %>
+                                            </div>
                                         <% end %>
-                                      </div>
+                                        <% if @subscriptions == nil || @subscriptions.count == 0 %>
+                                          <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
+                                        <% end %>
                                     </div>
 
-                                    <div class="row">
-                                      <div class="col-md-offset-1 col-md-10">
-                                        <hr>
-                                      </div>
-                                    </div> 
-
-                                    <div class="row centered">
-                                    <% if ( current_user.account == 'individual' && current_user.subscriptions.count == 0 ) ||  ( current_user.account == 'professional' ) %>
-
-                                          <h3>Ajouter une nouvelle station :</h3>
-                                          
-                                            <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
-                                                <div class="input-group">
-                                                    <%= select_tag(:ville, options_for_select(list_station.sort), class:'form-control', multiple: false) %>
-                                                    <span class="input-group-btn">
-                                                        <%= submit_tag "OK", class: "btn btn-primary" %>
-                                                  </span>
-                                                </div>
+                                        <div class="row">
+                                          <div class="col-md-offset-1 col-md-10">
+                                            <% if current_user.account == 'professional' %>
+                                                <% @subscriptions.each do |s| %>
+                                                  <div class="col-md-3">        
+                                                      <div class="station-bloc">
+                                                        <div class='col-md-offset-10'>
+                                                          <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                                                            <i class='fa fa-times'></i>
+                                                          <% end %>
+                                                        
+                                                        </div>
+                                                          <%= link_to dashboards_analysis_path do %>
+                                                            <h2> <%= titleize(s.resort.ville)%> </h2>
+                                                          <% end %>
+                                                      </div>
+                                                  </div>
+                                                <% end %>
                                             <% end %>
+                                          </div>
+                                        </div>
 
-                                       <% end %> 
+                                        <div class="row">
+                                          <div class="col-md-offset-1 col-md-10">
+                                            <hr>
+                                          </div>
+                                        </div> 
+
+                                        <div class="row centered">
+                                        <% if ( current_user.account == 'individual' && current_user.subscriptions.count == 0 ) ||  ( current_user.account == 'professional' ) %>
+
+                                              <h3>Ajouter une nouvelle station :</h3>
+                                              
+                                                <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
+                                                    <div class="input-group">
+                                                        <%= select_tag(:ville, options_for_select(list_station.sort), class:'form-control', multiple: false) %>
+                                                        <span class="input-group-btn">
+                                                            <%= submit_tag "OK", class: "btn btn-primary" %>
+                                                      </span>
+                                                    </div>
+                                                <% end %>
+
+                                           <% end %> 
+                                        </div>
                                     </div>
-                                </div>
                                 </div> <!-- End of resorts list and subscriptions -->
 
 
@@ -256,7 +256,7 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> <!-- End of edit personnal info -->
 
                             </div>
              
@@ -271,8 +271,6 @@
         <!-- ================== -->
 
 <%= render 'footer' %>
-
-
 
 </section>
 <!-- Main Content Ends -->
