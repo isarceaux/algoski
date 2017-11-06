@@ -487,6 +487,8 @@ header {
 }
 
 
+
+
 /***************** 4.Content Area (right) ****************/
 
 .content {
@@ -2227,7 +2229,7 @@ aside.left-panel.collapsed span.nav-label {
     left: 0;
   }
 
-  section.content {
+  section.content, header {
     margin-left: 0px;
   }
 
