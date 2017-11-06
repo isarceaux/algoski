@@ -142,7 +142,7 @@ class DashboardsController < ApplicationController
 
     selected_housings = Housing.where(resort_id:current_resort.id)
     selected_housings.each do |sc|
-      gon.points << [sc.title, sc.geocode_latitude, sc.geocode_longitude,"www.abritel.fr"+sc.link]
+      gon.points << [sc.title, sc.geocode_latitude, sc.geocode_longitude,"//www.abritel.fr"+sc.link]
     end
 
     gon.centerlat = ( selected_housings.maximum('geocode_latitude') + selected_housings.minimum('geocode_latitude') ) / 2
