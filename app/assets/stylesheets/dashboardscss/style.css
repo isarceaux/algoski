@@ -296,6 +296,8 @@ header {
   background-color: #fff;
   padding-top: 4px;
   padding-bottom: 4px;
+  margin-left: 250px;
+  padding: 5px 15px;
 }
 
 .navbar-toggle {
@@ -2258,4 +2260,9 @@ aside.left-panel.collapsed span.nav-label {
 .alert
 {
   margin-bottom: 0;
+}
+
+.wraper
+{
+  padding-top: 0px;
 }
