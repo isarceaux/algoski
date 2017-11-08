@@ -37,7 +37,7 @@
                       </ul>
                         
                         <%= hidden_field_tag :account_type, 'individual' %>
-
+                        <!--
                           <script src="https://checkout.stripe.com/checkout.js" 
                             class="stripe-button"
                             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -50,10 +50,11 @@
                             data-image= 'http://www.algo.ski/assets/logo-grey-d1ae9361718743edfff0c1b0b67dec2793625a6eeb3867d1f3117f88c0a9f114.png'
                             data-allow-remember-me=false
                             data-currency="eur"></script>
+                          -->
                     
                     <% end %>
                     </div>
-                    <span class="tip">* Plus répandue chez les particuliers propriétaires</span>
+                    <span class="tip">Idéal si vous êtes propriétaire d'un seul bien</span>
                   </div> <!-- end col -->
 
                   <div class="col-sm-4">
@@ -70,7 +71,7 @@
                       </ul>
                       
                       <%= hidden_field_tag :account_type, 'professional' %>
-
+                    <!--
                       <script src="https://checkout.stripe.com/checkout.js" 
                         class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -83,9 +84,11 @@
                         data-image= 'http://www.algo.ski/assets/logo-grey-d1ae9361718743edfff0c1b0b67dec2793625a6eeb3867d1f3117f88c0a9f114.png'
                         data-allow-remember-me=false
                         data-currency="eur"></script>
+                      -->
                         
                     <% end %>
                     </div> <!-- end Pricing_card -->
+                    <span class="tip">Pour les professionnels qui veulent comparer le marché immobilier dans plusieurs stations de ski</span>
                   </div> <!-- end col -->
                 </div> <!-- end row -->
             </div> <!-- end Col-10 -->
@@ -117,7 +120,7 @@
                       </ul>
                       
                       <%= hidden_field_tag :account_type, 'professional-upgrade' %>
-
+                    <!--
                       <script src="https://checkout.stripe.com/checkout.js" 
                         class="stripe-button"
                         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -130,6 +133,7 @@
                         data-image= 'http://www.algo.ski/assets/logo-grey-d1ae9361718743edfff0c1b0b67dec2793625a6eeb3867d1f3117f88c0a9f114.png'
                         data-allow-remember-me=false
                         data-currency="eur"></script>
+                      -->
                         
                     <% end %>
                     </div> <!-- end Pricing_card -->
@@ -143,6 +147,15 @@
     </div> <!-- end Container -->
 </section>
 
+<div class="row text-center">
+  <div class="col-sm-offset-1 col-sm-10">
+      <p class="slogan" style="color:red;">Les inscriptions ne sont pas encore ouvertes vous serez informé(e) par mail dès qu'elles seront ouvertes !</p>
+      <p>Retourner à <%= link_to 'mon compte', dashboards_profile_path %> <br>
+      Retourner à <%= link_to "l'accueil", root_path %></p>
+  </div>
+</div>
+  
+</div>
 <%= render 'pages/guarantee' %>
 
 <%= render 'footer' %>
