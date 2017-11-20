@@ -19,7 +19,7 @@ module ApplicationHelper
     villes.each do |i|
       if i
         if Resort.find_by_ville(I18n.transliterate(i))
-           if Classified.where("ville":"#{i}").count > 100 
+           if Classified.where("ville = ?",i).count > 100 
              list_of_station.push(titleize(i))
           end
         end
