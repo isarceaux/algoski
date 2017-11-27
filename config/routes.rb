@@ -25,8 +25,6 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
   get '/legal', to: 'pages#legal'
 
-  # get '/users', to: 'pages#home'
-
   resources :subscriptions, only: [:destroy]
 
   authenticate :user, lambda { |bu| bu.admin? } do

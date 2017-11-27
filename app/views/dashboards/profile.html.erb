@@ -1,271 +1,271 @@
 <%= render 'header' %>
 <%= render 'aside' %>
 
-        <!--Main Content Start -->
-        <section class="content">
-            
-            <!-- Page Content Start -->
-            <!-- ================== -->
+<!--Main Content Start -->
+<section class="content">
+    
+    <!-- Page Content Start -->
+    <!-- ================== -->
 
-            <div class="wraper container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="bg-picture" style="background-image:url('/assets/bg_6.jpg')">
-                          <span class="bg-picture-overlay"></span><!-- overlay -->
-                          <!-- meta -->
-                          <div class="box-layout meta bottom">
-                            <div class="col-sm-6 clearfix">
-                              <div class="media-body">
-                                <h3 class="text-white mb-2 m-t-10 ellipsis"><%= titleize(@user.first_name) %> <%= @user.last_name %></h3>
-                              </div>
-                            </div>
-                          </div>
-                          <!--/ meta -->
-                        </div>
+    <div class="wraper container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="bg-picture" style="background-image:url('/assets/bg_6.jpg')">
+                  <span class="bg-picture-overlay"></span><!-- overlay -->
+                  <!-- meta -->
+                  <div class="box-layout meta bottom">
+                    <div class="col-sm-6 clearfix">
+                      <div class="media-body">
+                        <h3 class="text-white mb-2 m-t-10 ellipsis"><%= titleize(@user.first_name) %> <%= @user.last_name %></h3>
+                      </div>
                     </div>
-                </div>
-
-                <div class="row m-t-30">
-                    <div class="col-sm-12">
-                        <div class="panel panel-default p-0">
-                            <div class="panel-body p-0"> 
-                                <ul class="nav nav-tabs profile-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#aboutme">Informations personnelles</a></li>
-                                    <li class=""><a data-toggle="tab" href="#myresorts">Mes stations de skis</a></li>
-                                    <li class=""><a data-toggle="tab" href="#editmyinfo">Editer mes informations</a></li>
-                                </ul>
-
-                                <div class="tab-content m-0"> 
-
-                                <div id="aboutme" class="tab-pane active">
-                                    <div class="profile-desk">
-                                        <h1><%= titleize(@user.first_name) %> <%= @user.last_name %></h1>
-                                        
-                                        <% if @user.account == 'professional' %>
-                                            <div class="custom-btn bg-purple " href="#"> Professionnel</div>
-                                        <% elsif @user.account == 'individual' %>
-                                            <%= link_to new_charge_path do %>
-                                                <div class="flex-row">
-                                                    <span class="btn custom-btn bg-pink"> Particulier</span>
-                                                    <span class='pop-up-right'>Passer en pro</span>
-                                                </div>
-                                            <% end %>    
-                                        <% else %>
-                                            <%= link_to new_charge_path do %>
-                                                <div class="flex-row">
-                                                    <span class="btn custom-btn bg-danger"> Souscrire</span>
-                                                    <span style="margin-left:5px;"> pour accéder au contenu</span>
-                                                </div>
-                                            <% end %>
-                                            <!-- <a href="">S'abonner pour accéder au contenu</a> -->
-                                        <% end %>
-                                        
-                                        <% if @user.account != nil && @user.subscriptions.count == 0 %>
-                                            <div class="warning-message-profile" >
-                                                <p>Aller dans l'onglet <span style="text-decoration: underline;"> "Mes stations de Skis"</span> pour choisir une station et accéder aux données</p>
-                                            </div>
-                                        <% elsif @user.account == nil %>
-                                            <div class="warning-message-profile" >
-                                                <p>Vous devez souscrire pour accéder au contenu en cliquant sur le bouton ci-dessus</p>
-                                            </div>
-                                        <% end %>
-
-
-                                        <table class="table table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="3"><h3>Informations personnelles</h3></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><b>Nom</b></td>
-                                                    <td class="ng-binding">
-                                                        <%= titleize(@user.last_name) %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Prénom</b></td>
-                                                    <td class="ng-binding">
-                                                        <%= titleize(@user.first_name) %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Email</b></td>
-                                                    <td class="ng-binding">
-                                                        <%= @user.email.downcase %>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Stations de ski</b></td>
-                                                    <!-- Modifier cette partie pour prendre en compte le fait d'avoir une ou plusieurs stations en fonction du type de compte -->
-                                                    <td class="ng-binding">
-                                                        <% if @user.subscriptions.count == 1 %>
-                                                            <%= titleize( @user.subscriptions[0].resort.ville ) %>
-                                                        <% elsif @user.subscriptions.count > 1 %>
-                                                            <%= titleize( @user.subscriptions[0].resort.ville ) %>
-                                                            <% @user.subscriptions[1..-1].each do |s| %>
-                                                                , <%= titleize( s.resort.ville ) %>
-                                                            <% end %>
-                                                        <% else %>
-                                                            <em>Vous n'êtes abonné(e) à aucune station</em>
-                                                        <% end %>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- end profile-desk -->
-                                </div> <!-- about-me -->
-
-
-                            <!-- Resorts list and subscriptions -->
-                                <div id="myresorts" class="tab-pane">
-                                    <div class="profile-desk">
-                                    <div class='row not-subscribed'>
-                                        <% if current_user.account == 'professional' %>
-                                            Vous avez un compte professionnel, vous pouvez donc ajouter autant de stations de ski que vous le souhaitez.
-                                        <%  elsif current_user.account == 'individual' %>
-                                            Avez votre compte vous ne pouvez être abonné qu'à une seule station. Si vous souhaitez être abonné à plus de stations suivez ce <%= link_to 'lien', new_charge_path %>
-                                        <% else %>
-                                            <div class="flex-row container-center">
-                                                <span style="margin-right:10px;">Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord :</span>
-                                                <%= link_to new_charge_path do %>
-                                                    <span class="btn custom-btn bg-danger"> Souscrire</span>
-                                                <% end %>
-                                            </div>
-                                        <% end %>
-                                        <% if @subscriptions == nil || @subscriptions.count == 0 %>
-                                          <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
-                                        <% end %>
-                                    </div>
-
-                                        <div class="row">
-                                          <div class="col-md-offset-1 col-md-10">
-                                            <% if current_user.account == 'professional' %>
-                                                <% @subscriptions.each do |s| %>
-                                                  <div class="col-md-3">        
-                                                      <div class="station-bloc">
-                                                        <div class='col-md-offset-10'>
-                                                          <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
-                                                            <i class='fa fa-times'></i>
-                                                          <% end %>
-                                                        
-                                                        </div>
-                                                          <%= link_to dashboards_analysis_path do %>
-                                                            <h2> <%= titleize(s.resort.ville)%> </h2>
-                                                          <% end %>
-                                                      </div>
-                                                  </div>
-                                                <% end %>
-                                            <% end %>
-                                          </div>
-                                        </div>
-
-                                        <div class="row">
-                                          <div class="col-md-offset-1 col-md-10">
-                                            <hr>
-                                          </div>
-                                        </div> 
-
-                                        <div class="row centered">
-                                        <% if ( current_user.account == 'individual' && current_user.subscriptions.count == 0 ) ||  ( current_user.account == 'professional' ) %>
-
-                                              <h3>Ajouter une nouvelle station :</h3>
-                                              
-                                                <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
-                                                    <div class="input-group">
-                                                        <%= select_tag(:ville, options_for_select(list_station.sort), class:'form-control', multiple: false) %>
-                                                        <span class="input-group-btn">
-                                                            <%= submit_tag "OK", class: "btn btn-primary" %>
-                                                      </span>
-                                                    </div>
-                                                <% end %>
-
-                                           <% end %> 
-                                        </div>
-                                    </div>
-                                </div> <!-- End of resorts list and subscriptions -->
-
-
-                    <!-- Edit personnal info -->
-                                <div id="editmyinfo" class="tab-pane">
-                                    <div class="user-profile-content">
-
-                                    <h3>Edition d'informations personnelles</h3>
-                                    
-                                    <% @user.civility == 'Mme' ? true : false %>
-                                        
-                                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-                                            <div class="form-group col-md-12">
-                                                <%= f.radio_button(:civility, 'Mme', checked:( @user.civility == 'Mme' ) ) %>
-                                                <%= f.label :civility, 'Mme'%>
-                                                <%= f.radio_button(:civility, 'M.', checked:( @user.civility == 'M.' )) %>
-                                                <%= f.label :civility, 'M.'%>
-                                                
-                                            </div>
-
-                                            
-                                            <div class="form-group col-md-6">
-                                                <%= f.label :first_name, 'Prénom' %>
-                                                <%= f.text_field :first_name, class: 'form-control', value: @user.first_name %>
-                                            </div>
-
-                                            <div class="form-group col-md-6">
-                                                <%= f.label :last_name, 'Nom'%>
-                                                <%= f.text_field :last_name, class: 'form-control', value: @user.last_name %>
-                                            </div>
-
-                                            <div class="form-group col-md-12">
-                                                <%= f.label :password, 'Nouveau mot de passe' %>
-                                                <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder:"Laissez vide pour garder l'actuel" %>
-                                            </div>
-
-                                            <div class="form-group col-md-12">
-                                                <%= f.label :password_confirmation, 'Confirmation du nouveau mot de passe' %>
-                                                <%= f.password_field :password_confirmation, class: 'form-control'  %>
-                                            </div>
-                                        
-                                        
-                                        <div class="col-md-12" style="text-align:center;border-top:1px solid lightgrey;padding-top: 10px;">Par sécurité nous vous demandons de rappeler les informations suivantes :</div>
-                                        
-
-                                            <div class="form-group col-md-12">
-                                                <%= f.label :email, 'Email' %>
-                                                <%= f.email_field :email, autofocus: true, class: 'form-control', value: @user.email, required: true %>
-                                            </div>
-
-                                            <div class="form-group col-md-12">
-                                                <%= f.label :current_password, 'Mot de passe actuel' %>
-                                                <%= f.password_field :current_password, class: 'form-control', required: true %>
-                                            </div>
-                                            
-                                            <div class="form-group text-right">
-                                                <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>
-                                            </div>
-
-                                        <% end %>
-
-                                        <div class="form-group m-t-30">
-                                          <div class="col-sm-12 text-center">
-                                              Insatisfait ? <%= link_to t('.cancel_my_account', default: 'Supprimer mon compte'), registration_path(resource_name), data: { confirm: t('.are_you_sure', default: "Etes-vous sûr(e)?") }, method: :delete %>
-                                          </div>
-                                        </div>
-
-                                    </div>
-                                </div> <!-- End of edit personnal info -->
-
-                            </div>
-             
-                        </div> 
-                    </div>
+                  </div>
+                  <!--/ meta -->
                 </div>
             </div>
-
         </div>
 
-        <!-- Page Content Ends -->
-        <!-- ================== -->
+        <div class="row m-t-30">
+            <div class="col-sm-12">
+                <div class="panel panel-default p-0">
+                    <div class="panel-body p-0"> 
+                        <ul class="nav nav-tabs profile-tabs">
+                            <li class="active"><a data-toggle="tab" href="#aboutme">Informations personnelles</a></li>
+                            <li class=""><a data-toggle="tab" href="#myresorts">Mes stations de skis</a></li>
+                            <li class=""><a data-toggle="tab" href="#editmyinfo">Editer mes informations</a></li>
+                        </ul>
+
+                        <div class="tab-content m-0"> 
+
+                        <div id="aboutme" class="tab-pane active">
+                            <div class="profile-desk">
+                                <h1><%= titleize(@user.first_name) %> <%= @user.last_name %></h1>
+                                
+                                <% if @user.account == 'professional' %>
+                                    <div class="custom-btn bg-purple " href="#"> Professionnel</div>
+                                <% elsif @user.account == 'individual' %>
+                                    <%= link_to new_charge_path do %>
+                                        <div class="flex-row">
+                                            <span class="btn custom-btn bg-pink"> Particulier</span>
+                                            <span class='pop-up-right'>Passer en pro</span>
+                                        </div>
+                                    <% end %>    
+                                <% else %>
+                                    <%= link_to new_charge_path do %>
+                                        <div class="flex-row">
+                                            <span class="btn custom-btn bg-danger"> Souscrire</span>
+                                            <span style="margin-left:5px;"> pour accéder au contenu</span>
+                                        </div>
+                                    <% end %>
+                                    <!-- <a href="">S'abonner pour accéder au contenu</a> -->
+                                <% end %>
+                                
+                                <% if @user.account != nil && @user.subscriptions.count == 0 %>
+                                    <div class="warning-message-profile" >
+                                        <p>Aller dans l'onglet <span style="text-decoration: underline;"> "Mes stations de Skis"</span> pour choisir une station et accéder aux données</p>
+                                    </div>
+                                <% elsif @user.account == nil %>
+                                    <div class="warning-message-profile" >
+                                        <p>Vous devez souscrire pour accéder au contenu en cliquant sur le bouton ci-dessus</p>
+                                    </div>
+                                <% end %>
+
+
+                                <table class="table table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3"><h3>Informations personnelles</h3></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Nom</b></td>
+                                            <td class="ng-binding">
+                                                <%= titleize(@user.last_name) %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Prénom</b></td>
+                                            <td class="ng-binding">
+                                                <%= titleize(@user.first_name) %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Email</b></td>
+                                            <td class="ng-binding">
+                                                <%= @user.email.downcase %>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Stations de ski</b></td>
+                                            <!-- Modifier cette partie pour prendre en compte le fait d'avoir une ou plusieurs stations en fonction du type de compte -->
+                                            <td class="ng-binding">
+                                                <% if @user.subscriptions.count == 1 %>
+                                                    <%= titleize( @user.subscriptions[0].resort.ville ) %>
+                                                <% elsif @user.subscriptions.count > 1 %>
+                                                    <%= titleize( @user.subscriptions[0].resort.ville ) %>
+                                                    <% @user.subscriptions[1..-1].each do |s| %>
+                                                        , <%= titleize( s.resort.ville ) %>
+                                                    <% end %>
+                                                <% else %>
+                                                    <em>Vous n'êtes abonné(e) à aucune station</em>
+                                                <% end %>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> <!-- end profile-desk -->
+                        </div> <!-- about-me -->
+
+
+                    <!-- Resorts list and subscriptions -->
+                        <div id="myresorts" class="tab-pane">
+                            <div class="profile-desk">
+                            <div class='row not-subscribed'>
+                                <% if current_user.account == 'professional' %>
+                                    Vous avez un compte professionnel, vous pouvez donc ajouter autant de stations de ski que vous le souhaitez.
+                                <%  elsif current_user.account == 'individual' %>
+                                    Avez votre compte vous ne pouvez être abonné qu'à une seule station. Si vous souhaitez être abonné à plus de stations suivez ce <%= link_to 'lien', new_charge_path %>
+                                <% else %>
+                                    <div class="flex-row container-center">
+                                        <span style="margin-right:10px;">Veuillez vous abonner pour pouvoir ajouter une ou plusieurs stations à votre tableau de bord :</span>
+                                        <%= link_to new_charge_path do %>
+                                            <span class="btn custom-btn bg-danger"> Souscrire</span>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                                <% if @subscriptions == nil || @subscriptions.count == 0 %>
+                                  <div class="row not-subscribed"><p>Ajoutez une station avec le champ de recherche ci-dessous.</p></div>
+                                <% end %>
+                            </div>
+
+                                <div class="row">
+                                  <div class="col-md-offset-1 col-md-10">
+                                    <% if current_user.account == 'professional' %>
+                                        <% @subscriptions.each do |s| %>
+                                          <div class="col-md-3">        
+                                              <div class="station-bloc">
+                                                <div class='col-md-offset-10'>
+                                                  <%= link_to "/subscriptions/#{s.id}", method: :delete do %>
+                                                    <i class='fa fa-times'></i>
+                                                  <% end %>
+                                                
+                                                </div>
+                                                  <%= link_to dashboards_analysis_path do %>
+                                                    <h2> <%= titleize(s.resort.ville)%> </h2>
+                                                  <% end %>
+                                              </div>
+                                          </div>
+                                        <% end %>
+                                    <% end %>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-offset-1 col-md-10">
+                                    <hr>
+                                  </div>
+                                </div> 
+
+                                <div class="row centered">
+                                <% if ( current_user.account == 'individual' && current_user.subscriptions.count == 0 ) ||  ( current_user.account == 'professional' ) %>
+
+                                      <h3>Ajouter une nouvelle station :</h3>
+                                      
+                                        <%=form_tag({controller: 'dashboards', action: 'profile'}, method: :get, class:"form-inline col-xs-12") do %>
+                                            <div class="input-group">
+                                                <%= select_tag(:ville, options_for_select(list_station.sort), class:'form-control', multiple: false) %>
+                                                <span class="input-group-btn">
+                                                    <%= submit_tag "OK", class: "btn btn-primary" %>
+                                              </span>
+                                            </div>
+                                        <% end %>
+
+                                   <% end %> 
+                                </div>
+                            </div>
+                        </div> <!-- End of resorts list and subscriptions -->
+
+
+            <!-- Edit personnal info -->
+                        <div id="editmyinfo" class="tab-pane">
+                            <div class="user-profile-content">
+
+                            <h3>Edition d'informations personnelles</h3>
+                            
+                            <% @user.civility == 'Mme' ? true : false %>
+                                
+                                <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+                                    <div class="form-group col-md-12">
+                                        <%= f.radio_button(:civility, 'Mme', checked:( @user.civility == 'Mme' ) ) %>
+                                        <%= f.label :civility, 'Mme'%>
+                                        <%= f.radio_button(:civility, 'M.', checked:( @user.civility == 'M.' )) %>
+                                        <%= f.label :civility, 'M.'%>
+                                        
+                                    </div>
+
+                                    
+                                    <div class="form-group col-md-6">
+                                        <%= f.label :first_name, 'Prénom' %>
+                                        <%= f.text_field :first_name, class: 'form-control', value: @user.first_name %>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <%= f.label :last_name, 'Nom'%>
+                                        <%= f.text_field :last_name, class: 'form-control', value: @user.last_name %>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <%= f.label :password, 'Nouveau mot de passe' %>
+                                        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder:"Laissez vide pour garder l'actuel" %>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <%= f.label :password_confirmation, 'Confirmation du nouveau mot de passe' %>
+                                        <%= f.password_field :password_confirmation, class: 'form-control'  %>
+                                    </div>
+                                
+                                
+                                <div class="col-md-12" style="text-align:center;border-top:1px solid lightgrey;padding-top: 10px;">Par sécurité nous vous demandons de rappeler les informations suivantes :</div>
+                                
+
+                                    <div class="form-group col-md-12">
+                                        <%= f.label :email, 'Email' %>
+                                        <%= f.email_field :email, autofocus: true, class: 'form-control', value: @user.email, required: true %>
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <%= f.label :current_password, 'Mot de passe actuel' %>
+                                        <%= f.password_field :current_password, class: 'form-control', required: true %>
+                                    </div>
+                                    
+                                    <div class="form-group text-right">
+                                        <%= f.submit t('.update', default: 'Update'), class: 'btn btn-primary' %>
+                                    </div>
+
+                                <% end %>
+
+                                <div class="form-group m-t-30">
+                                  <div class="col-sm-12 text-center">
+                                      Insatisfait ? <%= link_to t('.cancel_my_account', default: 'Supprimer mon compte'), registration_path(resource_name), data: { confirm: t('.are_you_sure', default: "Etes-vous sûr(e)?") }, method: :delete %>
+                                  </div>
+                                </div>
+
+                            </div>
+                        </div> <!-- End of edit personnal info -->
+
+                    </div>
+     
+                </div> 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Page Content Ends -->
+<!-- ================== -->
 
 <%= render 'footer' %>
 
