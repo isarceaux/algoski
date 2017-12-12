@@ -30,6 +30,7 @@ gem 'ionicons-rails'
 gem 'figaro'
 gem 'gon'
 gem 'stripe'
+gem 'watir'
 
 
 group :development, :test do
