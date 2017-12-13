@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  get 'housings/index'
+
   get 'dashboards/analysis'
 
   get 'dashboards/data-table'

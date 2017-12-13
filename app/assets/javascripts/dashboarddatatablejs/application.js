@@ -41,6 +41,15 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#housings').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+            'csv', 'excel'
+        ]
+    });
+} );
+
 // $(document).ready(function() {
 //     $('#dataTable').dataTable( {
 
