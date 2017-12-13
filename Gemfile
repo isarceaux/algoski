@@ -31,6 +31,7 @@ gem 'figaro'
 gem 'gon'
 gem 'stripe'
 gem 'watir'
+gem 'csv'
 
 
 group :development, :test do

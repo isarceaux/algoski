@@ -1,50 +1,67 @@
 class ContactProspectHomelidays
   
-  attr_accessor :browser
+  attr_accessor :browser, :first
 
   def initialize
     @browser = Watir::Browser.new(:firefox)
-    perform(Housing.find(23157).link)
-    perform(Housing.find(23156).link)
+    @first = true
+    list_of_urls = []
+    CSV.foreach("app/services/housing_url_list.csv") do |row|
+        list_of_urls << row[0] #Be careful first line just says links
+    end
+    
+    list_of_urls[5..10].each do |link|
+        perform(link)
+    end
+
+    # perform(list_of_urls[1])
+
   end
 
   def perform(url_client)
 
     @browser.goto 'https://www.abritel.fr'+url_client
-    sleep(5)
-    puts "sleep finished should refresh now"
-    @browser.refresh
-    class_button = 'btn cta js-emailOwnerButton btn-sm btn-link btn-inquiry-link'
-    @browser.link(class: class_button).click
-    # binding.pry
+    binding.pry
+
+    class_button = "btn btn-book cta cta-primary js-ctaPrimary btn-sm btn-default js-viewRateDetails non-olb-cta"
+    if @browser.button(class:class_button).enabled?
+        @browser.button(class:class_button).click
+    else
+        class_button = 'btn cta js-emailOwnerButton btn-sm btn-link btn-inquiry-link'
+        @browser.link(class: class_button).click
+    end
 
     # Filling the form
 
-    #Checking the box flexible date of stay
-    checkbox_id = "modal-flexibleDateInput"
-    @browser.checkbox(id:checkbox_id).click
+    if @first
+        #Checking the box flexible date of stay
+        checkbox_id = "modal-flexibleDateInput"
+        @browser.checkbox(id:checkbox_id).click
 
-    #Adding one adult
-    increment_button_class = "btn btn-default counter-button counter-button--gray js-increment"
-    @browser.button(class:increment_button_class).click
+        #Adding one adult
+        increment_button_class = "btn btn-default counter-button counter-button--gray js-increment"
+        @browser.button(class:increment_button_class).click
 
-    #Filling information
-    fill_first_name = @browser.text_field(id: 'modal-inquirerFirstName')
-    fill_first_name.send_keys('Isabelle')
+        #Filling information
+        fill_first_name = @browser.text_field(id: 'modal-inquirerFirstName')
+        fill_first_name.send_keys('Isabelle')
 
-    fill_last_name = @browser.text_field(id: 'modal-inquirerLastName')
-    fill_last_name.send_keys('Bonnet')
+        fill_last_name = @browser.text_field(id: 'modal-inquirerLastName')
+        fill_last_name.send_keys('Bonnet')
 
-    fill_mail = @browser.text_field(id: 'modal-inquirerEmailAddress')
-    fill_mail.send_keys('isabellecorp@gmail.com')
+        fill_mail = @browser.text_field(id: 'modal-inquirerEmailAddress')
+        fill_mail.send_keys('isabellecorp@gmail.com')
 
-    #Writting the mail
-    text_id = "modal-comments"
-    @browser.textarea(id:text_id).send_keys(new_text)
+        #Writting the mail
+        text_id = "modal-comments"
+        @browser.textarea(id:text_id).send_keys(new_text)
+    end
 
     #Sending the form (commented for tests)
     validation_button_class = 'btn btn-primary js-submitInquiry'
     browser.button(class: validation_button_class).click
+
+    @first = false
 
   end
 

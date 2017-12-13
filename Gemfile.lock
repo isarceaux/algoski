@@ -66,6 +66,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    csv (1.0.0)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -443,6 +444,7 @@ DEPENDENCIES
   byebug (= 9.0.6)
   carrierwave (= 1.1.0)
   coffee-rails (= 4.2.2)
+  csv
   devise
   devise-bootstrap-views
   dotenv
