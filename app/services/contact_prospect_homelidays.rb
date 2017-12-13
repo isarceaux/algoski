@@ -2,8 +2,9 @@ class ContactProspectHomelidays
   
   def initialize
     browser = Watir::Browser.new(:firefox)
+
     browser.goto 'https://www.abritel.fr/location-vacances/p1477842'
-    sleep(20)
+    sleep(10)
     puts "sleep finished should refresh now"
     browser.refresh
     class_button = 'btn cta js-emailOwnerButton btn-sm btn-link btn-inquiry-link'
@@ -12,9 +13,15 @@ class ContactProspectHomelidays
 
     # Filling the form
 
-    # id_flexible = 'modal-flexibleDateInput'
-    # browser.link(id: id_flexible).click
+    #Checking the box flexible date of stay
+    checkbox_id = "modal-flexibleDateInput"
+    browser.checkbox(id:checkbox_id).click
 
+    #Adding one adult
+    increment_button_class = "btn btn-default counter-button counter-button--gray js-increment"
+    browser.button(class:increment_button_class).click
+
+    #Filling information
     fill_first_name = browser.text_field(id: 'modal-inquirerFirstName')
     fill_first_name.send_keys('Isabelle')
 
@@ -24,11 +31,17 @@ class ContactProspectHomelidays
     fill_mail = browser.text_field(id: 'modal-inquirerEmailAddress')
     fill_mail.send_keys('isabellecorp@gmail.com')
 
-    fill_text = browser.text_field(id: 'modal-comments')
-    fill_text.send_keys("test")
+    #Writting the mail
+    text_id = "modal-comments"
+    browser.textarea(id:text_id).send_keys(new_text)
 
+    puts "Everything is ready for submitting the form... just check while the program sleeps"
+    # sleep(5)
+    binding.pry
+    
+    #Sending the form
     validation_button_class = 'btn btn-primary js-submitInquiry'
-    browser.link(class: validation_button_class).click
+    browser.button(class: validation_button_class).click
 
   end
 
