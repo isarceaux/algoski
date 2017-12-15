@@ -9,9 +9,11 @@ class ContactProspectHomelidays
     CSV.foreach("app/services/housing_url_list.csv") do |row|
         list_of_urls << row[0] #Be careful first line just says links
     end
-    
-    list_of_urls[5..10].each do |link|
+    count = 62
+    list_of_urls[62..100].each do |link|
+        puts "contacting prospect n°#{count}"
         perform(link)
+        count += 1
     end
 
     # perform(list_of_urls[1])
@@ -21,15 +23,10 @@ class ContactProspectHomelidays
   def perform(url_client)
 
     @browser.goto 'https://www.abritel.fr'+url_client
-    binding.pry
 
-    class_button = "btn btn-book cta cta-primary js-ctaPrimary btn-sm btn-default js-viewRateDetails non-olb-cta"
-    if @browser.button(class:class_button).enabled?
-        @browser.button(class:class_button).click
-    else
-        class_button = 'btn cta js-emailOwnerButton btn-sm btn-link btn-inquiry-link'
-        @browser.link(class: class_button).click
-    end
+    class1 = %w(contact-owner hidden-xs)
+    class2 = %w(btn btn-default)
+    @browser.element(class:class1).button(class:class2).click
 
     # Filling the form
 
@@ -39,7 +36,7 @@ class ContactProspectHomelidays
         @browser.checkbox(id:checkbox_id).click
 
         #Adding one adult
-        increment_button_class = "btn btn-default counter-button counter-button--gray js-increment"
+        increment_button_class = %w(btn btn-default counter-button counter-button--gray js-increment)
         @browser.button(class:increment_button_class).click
 
         #Filling information
@@ -50,18 +47,20 @@ class ContactProspectHomelidays
         fill_last_name.send_keys('Bonnet')
 
         fill_mail = @browser.text_field(id: 'modal-inquirerEmailAddress')
-        fill_mail.send_keys('isabellecorp@gmail.com')
+        fill_mail.send_keys('contact@algo.ski')
 
         #Writting the mail
         text_id = "modal-comments"
         @browser.textarea(id:text_id).send_keys(new_text)
+
+        @first = false
     end
 
     #Sending the form (commented for tests)
-    validation_button_class = 'btn btn-primary js-submitInquiry'
-    browser.button(class: validation_button_class).click
+    validation_button_class = %(btn btn-primary js-submitInquiry)
+    browser.button(class:validation_button_class).click
 
-    @first = false
+    sleep(5)
 
   end
 
