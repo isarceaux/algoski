@@ -5,13 +5,21 @@ class ContactProspectHomelidays
   def initialize
     @browser = Watir::Browser.new(:firefox)
     @first = true
+    @raised_error = false
+
     list_of_urls = []
     CSV.foreach("app/services/housing_url_list.csv") do |row|
         list_of_urls << row[0] #Be careful first line just says links
     end
-    count = 62
-    list_of_urls[62..100].each do |link|
+    count = 793
+    list_of_urls[793..900].each do |link|
         puts "contacting prospect n°#{count}"
+        if @raised_error
+            @browser = Watir::Browser.new(:firefox)
+            puts "Raised an error, relaunch the browser"
+            @first = true
+            @raised_error = false
+        end
         perform(link)
         count += 1
     end
@@ -26,7 +34,8 @@ class ContactProspectHomelidays
 
     class1 = %w(contact-owner hidden-xs)
     class2 = %w(btn btn-default)
-    @browser.element(class:class1).button(class:class2).click
+    begin
+        @browser.element(class:class1).button(class:class2).click
 
     # Filling the form
 
@@ -56,11 +65,18 @@ class ContactProspectHomelidays
         @first = false
     end
 
+
     #Sending the form (commented for tests)
     validation_button_class = %(btn btn-primary js-submitInquiry)
     browser.button(class:validation_button_class).click
-
     sleep(5)
+    
+    rescue Exception => e
+        puts "#{e}"
+        @raised_error = true
+        sleep(5)
+        @browser.close
+    end
 
   end
 
@@ -68,13 +84,13 @@ class ContactProspectHomelidays
     new_text = ""
     new_text = "Bonjour,
 
-Connaissez-vous le site Algoski : www.algo.ski ? 
+J'ai créé une start-up, Algoski, pour aider les propriétaires au ski à mieux louer leur appartement.
 
-Il permet aux propriétaires d'appartements au ski de louer plus de semaines et au meilleur prix en leur permettant de se comparer aux autres propriétaires dans leur station !
+L'idée m'est venu de ma mère, elle même propriétaire dans les Alpes, qui me posaient des questions du type : je n'arrive pas à louer, suis-je trop chère ? Comment savoir si je suis au bon prix? 
 
-De nombreux propriétaires à la montagne en France et en Suisse ont amélioré leur taux de remplissage et leurs revenus grâce à cet outil simple mais efficace. En un coup d'oeil vous obtenez les prix moyens de location pour chaque semaine !
+Grâce à mes connaissances en informatique j'ai développé un outil pour récupérer sur Abritel et Homelidays les prix à la semaine de tous les appartements au ski. Et j'ai décidé de le mettre à disposition du public avec le site Algoski moyennant un tarif de 49€ pour les particuliers et 249€ pour les pros.
 
-Si vous souhaitez en savoir plus n'hésitez pas à nous contacter par mail. Le mail est disponible sur la page contact de notre site.
+Si vous pensez qu'un tel service peut vous être utile n'hésitez pas à visiter mon site. Par ailleurs sachez que nous sommes une toute petite structure et nous sommes donc accessibles, vous pouvez nous contacter directement par mail, avec le mail que vous trouverez sur la page contact du site Algoski.
 
 Au plaisir de vous aider dans vos locations,
 
