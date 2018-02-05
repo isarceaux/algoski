@@ -11,8 +11,8 @@ class ContactProspectHomelidays
     CSV.foreach("app/services/housing_url_list.csv") do |row|
         list_of_urls << row[0] #Be careful first line just says links
     end
-    count = 793
-    list_of_urls[793..900].each do |link|
+    count = 20101
+    list_of_urls[20101..20200].each do |link| #Done until 20200
         puts "contacting prospect n°#{count}"
         if @raised_error
             @browser = Watir::Browser.new(:firefox)
@@ -67,7 +67,7 @@ class ContactProspectHomelidays
 
 
     #Sending the form (commented for tests)
-    validation_button_class = %(btn btn-primary js-submitInquiry)
+    validation_button_class = %w(btn btn-primary js-submitInquiry)
     browser.button(class:validation_button_class).click
     sleep(5)
     

@@ -1,24 +1,10 @@
-// Preparing the data to be used in graphs
-// var data_average = [] ;
-// var g = gon.averages ;
-
-// for(var i = 0; i < g.length ; i++ ){
-//     data_average.push({ y: g[i].start_date, b: g[i].average_value});
-//     }
-
-// console.log(g[i]);
-
-
-
-
-
 // Morris Chart for average price per week
 
     !function($) {
         "use strict";
 
 
-    //Line chart
+        //Line chart
         var Dashboard = function() {
             this.$body = $("body")
         };
@@ -43,7 +29,7 @@
         $.Dashboard = new Dashboard, $.Dashboard.Constructor = Dashboard;
 
 
-    //donut Morris chart
+        //donut Morris chart
         Morris.Donut({
           element: 'morris-donut-housing',
           data: gon.property_type,
