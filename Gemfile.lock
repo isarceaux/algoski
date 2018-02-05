@@ -77,6 +77,9 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.1)
+    emailhunter (0.7.0)
+      faraday
+      json
     erubi (1.6.1)
     excon (0.58.0)
     execjs (2.7.0)
@@ -448,6 +451,7 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   dotenv
+  emailhunter
   faker (= 1.7.3)
   figaro
   fog (= 1.40.0)
