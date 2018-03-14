@@ -18,7 +18,22 @@
 
 //= require bootstrap.min
 
+//Data Tables
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+
+
 
 $(function() {
   $('.select2').select2();
 });
+
+
+$(document).ready(function() {
+    $('#list_of_users').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+            'csv', 'excel'
+        ]
+    });
+} );

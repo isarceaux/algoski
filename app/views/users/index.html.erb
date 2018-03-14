@@ -1,32 +1,38 @@
-<h1>Liste d'utilisateurs</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <th>Prénom</th>
-    <th>Nom</th>
-    <th>email</th>
-    <th>Créé le</th>
-    <th>Type de compte</th>
-    <th>Abonnements</th>
-  </thead>
-  
-<% @users.each do |user| %> 
-  <tr>
-  <td><%= user.first_name %></td>
-  <td><%= user.last_name %></td>
-  <td><%= user.email %></td>
-  <td><%= user.created_at %></td>
-  <td><%= user.account %></td>
-  <td>
-    <ul>
-      <% user.resorts.each do |resort|%>
-        <li>
-        <%= resort.ville %>
-        </li>
-      <% end %>
-    </ul>
-  </td>
-  </tr>
-<% end %>
+  <h1>Liste d'utilisateurs</h1>
 
-</table>
+  <table class="table table-condensed table-hover" id="list_of_users">
+    <thead>
+      <th>ID</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>email</th>
+      <th>Créé le</th>
+      <th>Type de compte</th>
+      <th>Abonnements</th>
+    </thead>
+    
+  <% @users.each do |user| %> 
+    <tr>
+    <td><%= user.id %></td>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.created_at %></td>
+    <td><%= user.account %></td>
+    <td>
+      <ul>
+        <% user.resorts.each do |resort|%>
+          <li>
+          <%= resort.ville %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+    </tr>
+  <% end %>
+
+  </table>
+
+</div>
