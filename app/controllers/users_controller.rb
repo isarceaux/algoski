@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   # skip_before_action :verify_authenticity_token
   attr_accessor :current_ville_id
 
+  def index
+    @users = User.all
+  end
+
   private
 
     def user_params

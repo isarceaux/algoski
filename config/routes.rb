@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   devise_for :users
+  
+  authenticate :user, lambda { |bu| bu.super_admin? } do
+    get 'users/index'
+  end
 
   # To have a redirection do dashboards profile view :
   as :user do
@@ -29,7 +33,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:destroy]
 
-  authenticate :user, lambda { |bu| bu.admin? } do
+  authenticate :user, lambda { |bu| bu.super_admin? } do
      mount Sidekiq::Web => '/sidekiq'
   end
 

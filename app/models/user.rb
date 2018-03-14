@@ -14,7 +14,7 @@ class User < ApplicationRecord
     self.account = 'individual'
   end
 
-  # def super_admin?
-  #   email == "isabellecorp@gmail.com"
-  # end
+  def super_admin?
+    email == "isabellecorp@gmail.com"
+  end
 end
